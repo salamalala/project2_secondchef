@@ -1,0 +1,65 @@
+%h1= "Order ##{@order.id}"
+
+%br
+
+.row
+  .col-xs-3
+    %p.pull-right
+      %b Meal
+  .col-xs-9
+    %p= link_to @order.meal.name, @order.meal
+
+.row
+  .col-xs-3
+    %p.pull-right
+      %b Chef
+  .col-xs-9
+    %p= link_to @order.meal.user.chef_name, @order.meal.user
+
+.row
+  .col-xs-3
+    %p.pull-right
+      %b Address
+  .col-xs-9
+    %p= @order.meal.user.address
+
+.row
+  .col-xs-3
+    %p.pull-right
+      %b Ordered by
+  .col-xs-9
+    %p= @order.user.first_name
+
+.row
+  .col-xs-3
+    %p.pull-right
+      %b Fetch at
+  .col-xs-9
+    %p= time_tag(@order.fetch_at)
+
+.row
+  .col-xs-3
+    %p.pull-right
+      %b Quantity
+  .col-xs-9
+    %p= "#{@order.quantity} portions ordered"
+
+.row
+  .col-xs-3
+    %p.pull-right
+      %b Total price
+  .col-xs-9
+    %p= number_to_currency(@order.total, unit: "£")
+
+.row
+  .col-xs-3
+    %p.pull-right
+      %b Review
+  .col-xs-9
+    %p
+      - if !@order.review.nil?
+        = ("★" * @order.review.rating) + ("☆" * (5 - @order.review.rating))
+        = link_to "", edit_review_path(@order.review) if can? :update, @order.review
+        = link_to "✘", @order.review, :method => :delete, :data => { :confirm => 'Are you sure?' } if can? :destroy, @order.review
+      - else
+        = link_to "✚", new_review_path(order_id: @order) if can? :create, Review

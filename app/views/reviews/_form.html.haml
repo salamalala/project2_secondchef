@@ -1,0 +1,11 @@
+= simple_form_for(@review, html: { class: 'form-horizontal' }, wrapper: :horizontal_form) do |f|
+  - if @review.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@review.errors.count, "error")} prohibited this review from being saved:"
+      %ul
+        - @review.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.input :rating, collection: 1..5, prompt: "Select number of stars"
+  = f.hidden_field :order_id
+  = f.button :submit

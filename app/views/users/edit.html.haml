@@ -1,0 +1,27 @@
+%h1 Edit chef profile
+
+%br
+
+= simple_form_for(@user, html: { class: 'form-horizontal' }, wrapper: :horizontal_form) do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  %h2 Chef details
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :chef_name
+  = f.input :description
+  = f.input :phone_number
+
+  %h2 Address
+  = f.input :address_line_1
+  = f.input :address_line_2
+  = f.input :city
+  = f.input :postcode
+  = f.input :country, priority: ["United Kingdom"]
+
+  = f.button :submit
