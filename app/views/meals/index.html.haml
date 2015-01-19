@@ -1,7 +1,5 @@
 %h1 Tonight's meals
 
-%br
-
 %button{id: "locator"} Get location
 
 = form_tag "/meals", method: "get" do
@@ -12,24 +10,20 @@
   = collection_select :category, :category_id, Category.all, :id, :name, include_blank: true
   = submit_tag "Update results", id: "finder"
 
-%br
-
 - @meals.each do |meal|
   = link_to meal do
     = meal.name
     &nbsp;
     = number_to_currency(meal.price, unit: "£")
-      
+    &nbsp;
     = "#{number_with_precision(meal.distance, precision: 1)} miles"
     = Geocoder::Calculations.compass_point(meal.bearing)
 
 = paginate @meals
 
-%br
-
 - if current_user
   %div
-    - if current_user.role? :chef
-      = link_to "Cooking tonight? Add a meal!", new_meal_path if can? :create, Meal
-    - else
-      = link_to "Want to cook? Become a chef!", edit_user_path(current_user)
+  - if current_user.role? :chef
+    = link_to "Cooking tonight? Add a meal!", new_meal_path if can? :create, Meal
+  - else
+    = link_to "Want to cook? Become a chef!", edit_user_path(current_user)
