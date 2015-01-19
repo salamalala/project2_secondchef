@@ -20,10 +20,6 @@
 var myCalc = myCalc || {};
 
 myCalc.initialize = function() {
-
-};
-
-myCalc.initialize = function() {
   var price = parseFloat(myCalc.priceElement.text());
   myCalc.quantityElement.on("change", function() {
     myCalc.recalculateTotal([price]);

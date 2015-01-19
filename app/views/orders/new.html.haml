@@ -26,11 +26,11 @@
   = f.input :fetch_at
   = f.input :comments
 
-%p Quantity
-%p= "#{@order.meal.quantity} portions available"
+  %p Quantity
+  %p= "#{@order.meal.quantity} portions available"
 
-%p Price
-%p= number_to_currency(@order.meal.price, unit: "£")
+  %p Price
+  %p= number_to_currency(@order.meal.price, unit: "£")
 
 
   = f.input :quantity, collection: 1..@order.meal.quantity, prompt: "Select quantity"
@@ -38,8 +38,8 @@
   #hiddenprice= @order.meal.price
 
   %p Total
-    %p
-      %span#totalshow £...
+  %p
+    %span#totalshow £...
 
   = f.input :credit_card_name
   = f.input :credit_card_number
