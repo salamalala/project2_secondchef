@@ -16,14 +16,12 @@
 
 - @meals.each do |meal|
   = link_to meal do
-    .panel.panel-default
-      .panel-body
-        = meal.name
-        &nbsp;
-        = number_to_currency(meal.price, unit: "£")
-        .pull-right
-          = "#{number_with_precision(meal.distance, precision: 1)} miles"
-          = Geocoder::Calculations.compass_point(meal.bearing)
+    = meal.name
+    &nbsp;
+    = number_to_currency(meal.price, unit: "£")
+      
+    = "#{number_with_precision(meal.distance, precision: 1)} miles"
+    = Geocoder::Calculations.compass_point(meal.bearing)
 
 = paginate @meals
 

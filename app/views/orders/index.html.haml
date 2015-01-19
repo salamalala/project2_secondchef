@@ -4,8 +4,13 @@
 
 - @orders.each do |order|
   = link_to order do
+
+  
     = "Order ##{order.id} - #{order.meal.name}"
     &nbsp;
-    = number_to_currency(order.total, unit: "£")
+     
+      = number_to_currency(order.total, unit: "£")
+
+
 
 = paginate @orders

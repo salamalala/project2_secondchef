@@ -5,38 +5,19 @@
 
 %br
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Description
-  .col-xs-9
+    %p Description
     %p= @meal.description
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Category
-  .col-xs-9
+    %p Category
     %p= @meal.category.name
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Quantity
-  .col-xs-9
+
+    %p Quantity
     %p= "#{@meal.quantity} portions available"
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Price
-  .col-xs-9
+    %p Price
     %p= "#{number_to_currency(@meal.price, unit: "£")} per portion"
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Availability
-  .col-xs-9
+    %p Availability
     %p
       = time_tag(@meal.start_at)
       %br
@@ -45,9 +26,7 @@
 %br
 
 = link_to @meal.user do
-  .panel.panel-default
-    .panel-body
-      .pull-right
+ 
         - if !@meal.user.address_line_1.blank?
           = @meal.user.address_line_1
           %br
@@ -64,7 +43,6 @@
           = @meal.user.country
           %br
       %p
-        %b
           = @meal.user.chef_name
         %br
         %i

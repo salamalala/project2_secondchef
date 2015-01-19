@@ -31,4 +31,4 @@
       = link_to "", edit_review_path(@order.review) if can? :update, @order.review
       = link_to "✘", @order.review, :method => :delete, :data => { :confirm => 'Are you sure?' } if can? :destroy, @order.review
     - else
-        = link_to "✚", new_review_path(order_id: @order) if can? :create, Review
+      = link_to "✚", new_review_path(order_id: @order) if can? :create, Review
