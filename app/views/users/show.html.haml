@@ -4,39 +4,39 @@
 
 %br
 
-    %p Full name
-    %p= @user.name
+%p Full name
+%p= @user.name
 
 
-    %p Description
-    %p= @user.description
+%p Description
+%p= @user.description
 
 
-    %p Address
-    %p
-      = link_to "#" do
-        - if !@user.address_line_1.blank?
-          = @user.address_line_1
-          %br
-        - if !@user.address_line_2.blank?
-          = @user.address_line_2
-          %br
-        - if !@user.city.blank?
-          = @user.city
-          %br
-        - if !@user.postcode.blank?
-          = @user.postcode
-          %br
-        - if !@user.country.blank?
-          = @user.country
+%p Address
+%p
+  = link_to "#" do
+    - if !@user.address_line_1.blank?
+      = @user.address_line_1
+      %br
+    - if !@user.address_line_2.blank?
+      = @user.address_line_2
+      %br
+    - if !@user.city.blank?
+      = @user.city
+      %br
+    - if !@user.postcode.blank?
+      = @user.postcode
+      %br
+    - if !@user.country.blank?
+      = @user.country
 
 
-    %p Phone
-    %p= @user.phone_number
+%p Phone
+%p= @user.phone_number
 
 
-    %p Avg. rating
-    %p= @user.average_rating.blank? ? "No reviews yet" : @user.average_rating
+%p Avg. rating
+%p= @user.average_rating.blank? ? "No reviews yet" : @user.average_rating
 
 %br
 
@@ -47,12 +47,11 @@
   - if @reviews.any?
     - @reviews.each do |review|
       
-          = ("★" * review.rating) + ("☆" * (5 - review.rating))
-          &nbsp;
-          %i
-            by
-            = review.order.user.first_name
-            = time_tag(review.order.created_at)
+      = ("★" * review.rating) + ("☆" * (5 - review.rating))
+      &nbsp;
+      by
+      = review.order.user.first_name
+    = time_tag(review.order.created_at)
     / = paginate @reviews
   - else
     No reviews yet
@@ -66,13 +65,13 @@
   - if @current_meals.any?
     - @current_meals.each do |meal|
       = link_to meal do
-            = meal.name
-            &nbsp;
-            = number_to_currency(meal.price, unit: "£")
+        = meal.name
+        &nbsp;
+        = number_to_currency(meal.price, unit: "£")
       
-              = time_tag(meal.start_at)
-              %br
-              = time_tag(meal.end_at)
+        = time_tag(meal.start_at)
+        %br
+        = time_tag(meal.end_at)
   - else
     No current meals yet
 
@@ -81,12 +80,12 @@
   - if @archived_meals.any?
     - @archived_meals.each do |meal|
       = link_to meal do
-            = meal.name
-            &nbsp;
-            = number_to_currency(meal.price, unit: "£")
-              = time_tag(meal.start_at)
-              %br
-              = time_tag(meal.end_at)
+        = meal.name
+        &nbsp;
+        = number_to_currency(meal.price, unit: "£")
+        = time_tag(meal.start_at)
+        %br
+        = time_tag(meal.end_at)
     / = paginate @archived_meals
   - else
     No archived meals yet
@@ -100,12 +99,11 @@
     - if @current_orders_received.any?
       - @current_orders_received.each do |order|
         = link_to order do
-         
-              = "Order ##{order.id} - #{order.meal.name}"
-              &nbsp;
-              = number_to_currency(order.total, unit: "£")
+          = "Order ##{order.id} - #{order.meal.name}"
+          &nbsp;
+          = number_to_currency(order.total, unit: "£")
              
-                = time_tag(order.created_at)
+          = time_tag(order.created_at)
     - else
       No orders received yet
 
@@ -113,12 +111,11 @@
 
     - if @archived_orders_received.any?
       - @archived_orders_received.each do |order|
-        = link_to order do
-         
-              = "Order ##{order.id} - #{order.meal.name}"
-              &nbsp;
-              = number_to_currency(order.total, unit: "£")
-                = time_tag(order.created_at)
+        = link_to order do       
+          = "Order ##{order.id} - #{order.meal.name}"
+          &nbsp;
+          = number_to_currency(order.total, unit: "£")
+          = time_tag(order.created_at)
       / = paginate @archived_orders_received
     - else
       No orders received yet
