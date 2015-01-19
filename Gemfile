@@ -5,6 +5,7 @@ gem 'neat'
 gem 'devise'
 gem 'cancancan'
 gem 'geocoder'
+gem 'kaminari'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
