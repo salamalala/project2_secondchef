@@ -27,8 +27,21 @@ class User < ActiveRecord::Base
     self.role.to_s == role_to_compare.to_s
   end
 
+  def name
+    first_name + " " + last_name
+  end
+
   def address
     [address_line_1, address_line_2, city, postcode, country].reject(&:blank?).join(", ")
+  end
+
+  def set_rating
+    ratings = self.reviews.map(&:rating)
+    average = ratings.inject(:+).to_f / ratings.size
+    if average.is_a? Float
+      self.average_rating = average
+      self.save
+    end
   end
   
 end

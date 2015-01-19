@@ -13,4 +13,8 @@ class Order < ActiveRecord::Base
   # validates :fetch_at <= :end_at
   # validates credit card details
 
+  def total
+    quantity * price
+  end
+
 end
