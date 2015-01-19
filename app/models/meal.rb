@@ -14,4 +14,11 @@ class Meal < ActiveRecord::Base
   # validates :start_at > Time.zone.now
   # validates :end_at > :start_at
 
+  geocoded_by :chef_address
+  after_validation :geocode
+
+  def chef_address
+    self.user.address
+  end
+
 end

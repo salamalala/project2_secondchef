@@ -20,12 +20,15 @@ class User < ActiveRecord::Base
     self.role? "chef"
   end
 
-  # to add geocoding
+  geocoded_by :address
+  after_validation :geocode
 
   def role?(role_to_compare)
     self.role.to_s == role_to_compare.to_s
   end
 
-  # to add utility methods
+  def address
+    [address_line_1, address_line_2, city, postcode, country].reject(&:blank?).join(", ")
+  end
   
 end
