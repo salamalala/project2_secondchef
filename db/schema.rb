@@ -11,10 +11,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119125040) do
+ActiveRecord::Schema.define(version: 20150119131501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meals", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.string   "name"
+    t.string   "description"
+    t.decimal  "price"
+    t.integer  "quantity"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "meal_id"
+    t.decimal  "price"
+    t.integer  "quantity"
+    t.datetime "fetch_at"
+    t.string   "comments"
+    t.string   "credit_card_number"
+    t.string   "credit_card_name"
+    t.date     "credit_card_expiry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -29,6 +71,23 @@ ActiveRecord::Schema.define(version: 20150119125040) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.float    "current_latitude"
+    t.float    "current_longitude"
+    t.string   "chef_name"
+    t.string   "description"
+    t.string   "image"
+    t.string   "phone_number"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "postcode"
+    t.string   "country"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.float    "average_rating"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
