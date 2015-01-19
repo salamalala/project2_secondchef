@@ -2,51 +2,6 @@
 
 %br
 
-<<<<<<< HEAD
-
-    %p Meal
-
-    %p= link_to @order.meal.name, @order.meal
-
-
-    %p Chef
-  
-    %p= link_to @order.meal.user.chef_name, @order.meal.user
-
-
-    %p Address
-  
-    %p= @order.meal.user.address
-
-
-    %p Ordered by
-  
-    %p= @order.user.first_name
-
-
-    %p Fetch at
-  
-    %p= time_tag(@order.fetch_at)
-
-
-    %p Quantity
-  
-    %p= "#{@order.quantity} portions ordered"
-
-
-    %p Total price
-  
-    %p= number_to_currency(@order.total, unit: "£")
-
-
-    %p Review
-    %p
-      - if !@order.review.nil?
-        = ("★" * @order.review.rating) + ("☆" * (5 - @order.review.rating))
-        = link_to "", edit_review_path(@order.review) if can? :update, @order.review
-        = link_to "✘", @order.review, :method => :delete, :data => { :confirm => 'Are you sure?' } if can? :destroy, @order.review
-      - else
-=======
 %p Meal
 %p= link_to @order.meal.name, @order.meal
 
@@ -76,5 +31,4 @@
       = link_to "", edit_review_path(@order.review) if can? :update, @order.review
       = link_to "✘", @order.review, :method => :delete, :data => { :confirm => 'Are you sure?' } if can? :destroy, @order.review
     - else
->>>>>>> cfa40352eb80e5b0c3b7c0bda5758ae3d322845a
-        = link_to "✚", new_review_path(order_id: @order) if can? :create, Review
+      = link_to "✚", new_review_path(order_id: @order) if can? :create, Review
