@@ -25,7 +25,7 @@
 
 %br
 
-= simple_form_for([@order.meal, @order], html: { class: 'form-horizontal' }, wrapper: :horizontal_form) do |f|
+= simple_form_for([@order.meal, @order]) do |f|
 
   - if @order.errors.any?
     #error_explanation
