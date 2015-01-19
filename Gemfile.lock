@@ -145,7 +145,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cancancan (~> 1.10)
+  cancancan
   coffee-rails (~> 4.0.0)
   devise
   haml-rails

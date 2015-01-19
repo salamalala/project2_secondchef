@@ -11,13 +11,21 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, presence: true
 
-  # with_options if: :is_chef? do |chef|
-  #   chef.validates :chef_name, :description, :phone_number, :address_line_1, :city, :postcode, :country, presence: true
-  #   chef.validates :chef_name, length: { minimum: 2 }
-  # end
+  with_options if: :is_chef? do |chef|
+    chef.validates :chef_name, :description, :phone_number, :address_line_1, :city, :postcode, :country, presence: true
+    chef.validates :chef_name, length: { minimum: 2 }
+  end
 
-  # def is_chef?
-  #   self.role? "chef"
-  # end
+  def is_chef?
+    self.role? "chef"
+  end
+
+  # to add geocoding
+
+  def role?(role_to_compare)
+    self.role.to_s == role_to_compare.to_s
+  end
+
+  # to add utility methods
   
 end
