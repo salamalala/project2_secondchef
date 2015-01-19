@@ -1,19 +1,21 @@
 %h1
   = "#{@user.chef_name}"
-  = link_to "", edit_user_path(@user) if can? :update, @user
+  = link_to "edit", edit_user_path(@user) if can? :update, @user
+  = button_to "Add Meal", new_meal_path if can? :create, Meal
+  = button_to "View Orders", new_meal_path if can? :create, Meal
+ 
 
-%br
+%p 
+  Full name: 
+  = @user.name
 
-%p Full name
-%p= @user.name
+%p 
+  Description:
+  = @user.description
 
-
-%p Description
-%p= @user.description
-
-
-%p Address
-%p
+%p 
+  Address:
+  %br
   = link_to "#" do
     - if !@user.address_line_1.blank?
       = @user.address_line_1
@@ -30,19 +32,19 @@
     - if !@user.country.blank?
       = @user.country
 
+%p
+  Phone:
+  = @user.phone_number
 
-%p Phone
-%p= @user.phone_number
-
-
-%p Avg. rating
-%p= @user.average_rating.blank? ? "No reviews yet" : @user.average_rating
+%p 
+  Avg. rating:
+  = @user.average_rating.blank? ? "No reviews yet" : @user.average_rating
 
 %br
 
 - if @user.role? :chef
 
-  %h2 Reviews
+  %h3 Reviews
 
   - if @reviews.any?
     - @reviews.each do |review|
@@ -56,11 +58,8 @@
   - else
     No reviews yet
 
-  %h2
-    Meals
-    = link_to "✚", new_meal_path if can? :create, Meal
 
-  %h3 Current
+  %h3 Current Meals on Offer
 
   - if @current_meals.any?
     - @current_meals.each do |meal|
@@ -74,48 +73,50 @@
         = time_tag(meal.end_at)
   - else
     No current meals yet
+    = button_to "Add Meal", new_meal_path if can? :create, Meal
 
-  %h3 Archived
+  %h3 Archived Meals
 
   - if @archived_meals.any?
     - @archived_meals.each do |meal|
       = link_to meal do
         = meal.name
         &nbsp;
-        = number_to_currency(meal.price, unit: "£")
-        = time_tag(meal.start_at)
-        %br
-        = time_tag(meal.end_at)
+        |
+        = number_to_currency(meal.price, unit: "£") 
+        / = time_tag(meal.start_at)
+        |
+        = time_tag(meal.end_at) 
     / = paginate @archived_meals
   - else
     No archived meals yet
 
   - if @user == current_user
 
-    %h2 Orders received
+    / %h2 Orders received
 
-    %h3 Current
+    / %h3 Current
 
-    - if @current_orders_received.any?
-      - @current_orders_received.each do |order|
-        = link_to order do
-          = "Order ##{order.id} - #{order.meal.name}"
-          &nbsp;
-          = number_to_currency(order.total, unit: "£")
+    / - if @current_orders_received.any?
+    /   - @current_orders_received.each do |order|
+    /     = link_to order do
+    /       = "Order ##{order.id} - #{order.meal.name}"
+    /       &nbsp;
+    /       = number_to_currency(order.total, unit: "£")
              
-          = time_tag(order.created_at)
-    - else
-      No orders received yet
+    /       = time_tag(order.created_at)
+    / - else
+    /   No orders received yet
 
-    %h3 Archived
+    / %h3 Archived
 
-    - if @archived_orders_received.any?
-      - @archived_orders_received.each do |order|
-        = link_to order do       
-          = "Order ##{order.id} - #{order.meal.name}"
-          &nbsp;
-          = number_to_currency(order.total, unit: "£")
-          = time_tag(order.created_at)
-      / = paginate @archived_orders_received
-    - else
-      No orders received yet
+    / - if @archived_orders_received.any?
+    /   - @archived_orders_received.each do |order|
+    /     = link_to order do       
+    /       = "Order ##{order.id} - #{order.meal.name}"
+    /       &nbsp;
+    /       = number_to_currency(order.total, unit: "£")
+    /       = time_tag(order.created_at)
+    /   / = paginate @archived_orders_received
+    / - else
+    /   No orders received yet
