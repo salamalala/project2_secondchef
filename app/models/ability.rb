@@ -75,5 +75,4 @@ class Ability
         end
     end
 
->>>>>>> dev_mathieu
 end
