@@ -21,4 +21,12 @@ class Meal < ActiveRecord::Base
     self.user.address
   end
 
+  def available?
+    quantity > 0
+  end
+
+  def current?
+    end_at > Time.zone.now
+  end
+
 end
