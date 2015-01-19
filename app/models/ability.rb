@@ -74,9 +74,4 @@ class Ability
         
         end
     end
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 07d80da35879576c34708fd3285e7b345a873aab
 end
