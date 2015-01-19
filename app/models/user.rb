@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     self.role.to_s == role_to_compare.to_s
   end
 
+  def name
+    first_name + " " + last_name
+  end
+
   def address
     [address_line_1, address_line_2, city, postcode, country].reject(&:blank?).join(", ")
   end
