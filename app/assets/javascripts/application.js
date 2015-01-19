@@ -15,6 +15,33 @@
 //= require turbolinks
 //= require_tree .
 
+// order total calculation
+
+var myCalc = myCalc || {};
+
+myCalc.initialize = function() {
+
+};
+
+myCalc.initialize = function() {
+  var price = parseFloat(myCalc.priceElement.text());
+  myCalc.quantityElement.on("change", function() {
+    myCalc.recalculateTotal([price]);
+  });
+};
+
+myCalc.recalculateTotal = function(price) {
+  var quantity = myCalc.quantityElement.val();
+  var total = price * quantity;
+  myCalc.totalElement.text("£" + total.toFixed(2));
+};
+
+$(function(){
+  myCalc.priceElement = $("#hiddenprice");
+  myCalc.quantityElement = $("#order_quantity");
+  myCalc.totalElement = $("#totalshow");
+  myCalc.initialize();
+});
 
 // mapping
 
