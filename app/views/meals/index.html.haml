@@ -10,14 +10,16 @@
   = collection_select :category, :category_id, Category.all, :id, :name, include_blank: true
   = submit_tag "Update results", id: "finder"
 
-- @meals.each do |meal|
-  = link_to meal do
-    = meal.name
-    &nbsp;
-    = number_to_currency(meal.price, unit: "£")
-    &nbsp;
-    = "#{number_with_precision(meal.distance, precision: 1)} miles"
-    = Geocoder::Calculations.compass_point(meal.bearing)
+%ul
+  - @meals.each do |meal|
+    %li
+      = link_to meal do
+        = meal.name
+        &nbsp;
+        = number_to_currency(meal.price, unit: "£")
+        &nbsp;
+        = "#{number_with_precision(meal.distance, precision: 1)} miles"
+        = Geocoder::Calculations.compass_point(meal.bearing)
 
 = paginate @meals
 
