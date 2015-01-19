@@ -6,6 +6,8 @@ gem 'devise'
 gem 'cancancan'
 gem 'geocoder'
 gem 'kaminari'
+gem 'simple_form'
+gem 'country_select'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
