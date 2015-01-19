@@ -11,6 +11,14 @@
 %p Category
 %p= @meal.category.name
 
+- if current_user
+  = link_to "Place order!", new_meal_order_path(@meal) if can? :create, Order
+- else
+  Want to order?
+  = link_to "Log in", new_user_session_path
+  or
+  = link_to "Register", new_user_registration_path
+
 %p Quantity
 %p= "#{@meal.quantity} portions available"
 
@@ -25,31 +33,34 @@
 
 %br
 
-= link_to @meal.user do
-  %p
-    = @meal.user.chef_name
-  %p
-    = @meal.user.name
-  %p
-    - if @meal.user.average_rating.blank?
-      No reviews yet
-    - else
-      = "Avg. rating: #{@meal.user.average_rating}"
-  %p
-    - if !@meal.user.address_line_1.blank?
-      = @meal.user.address_line_1
-      %br
-    - if !@meal.user.address_line_2.blank?
-      = @meal.user.address_line_2
-      %br
-    - if !@meal.user.city.blank?
-      = @meal.user.city
-      %br
-    - if !@meal.user.postcode.blank?
-      = @meal.user.postcode
-      %br
-    - if !@meal.user.country.blank?
-      = @meal.user.country
+.chef_shortinfo
+  = link_to @meal.user do
+    %p
+      = @meal.user.chef_name
+    %p
+      = @meal.user.name
+    %p
+      - if @meal.user.average_rating.blank?
+        No reviews yet
+      - else
+        = "Avg. rating: #{@meal.user.average_rating}"
+    %p
+      - if !@meal.user.address_line_1.blank?
+        = @meal.user.address_line_1
+        %br
+      - if !@meal.user.address_line_2.blank?
+        = @meal.user.address_line_2
+        %br
+      - if !@meal.user.city.blank?
+        = @meal.user.city
+        %br
+      - if !@meal.user.postcode.blank?
+        = @meal.user.postcode
+        %br
+      - if !@meal.user.country.blank?
+        = @meal.user.country
+
+
 
 - if current_user
   = link_to "Place order!", new_meal_order_path(@meal) if can? :create, Order

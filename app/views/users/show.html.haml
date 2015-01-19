@@ -47,9 +47,15 @@
   - else
     No reviews yet
 
+
   %h2
-    Meals
+    Add a meal
     = link_to "✚", new_meal_path if can? :create, Meal
+
+  %h2
+    Offered meals
+
+  
 
   %h3 Current
 
@@ -110,4 +116,4 @@
               = time_tag(order.created_at)
       / = paginate @archived_orders_received
     - else
-      No orders received yet
+      No archived orders yet
