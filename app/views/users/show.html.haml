@@ -1,8 +1,9 @@
 %h1
   = "#{@user.chef_name}"
   = link_to "edit", edit_user_path(@user) if can? :update, @user
-  = button_to "Add Meal", new_meal_path if can? :create, Meal
-  = button_to "View Orders", new_meal_path if can? :create, Meal
+  %br
+  = link_to "Add Meal", new_meal_path if can? :create, Meal
+  = link_to "View Orders", new_meal_path if can? :create, Meal
  
 
 %p 
@@ -12,6 +13,7 @@
 %p 
   Description:
   = @user.description
+
 
 %p 
   Address:
@@ -72,8 +74,9 @@
         %br
         = time_tag(meal.end_at)
   - else
-    No current meals yet
-    = button_to "Add Meal", new_meal_path if can? :create, Meal
+    No current meals 
+    %br
+    = link_to "Add Meal", new_meal_path if can? :create, Meal
 
   %h3 Archived Meals
 

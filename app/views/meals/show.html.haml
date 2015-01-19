@@ -1,24 +1,31 @@
 %h1
   = @meal.name
-  = link_to "", edit_meal_path(@meal) if can? :update, @meal
-  = link_to "✘", @meal, :method => :delete, :data => { :confirm => 'Are you sure?' } if can? :destroy, @meal
+  = link_to "edit", edit_meal_path(@meal) if can? :update, @meal
+  = link_to "remove", @meal, :method => :delete, :data => { :confirm => 'Are you sure?' } if can? :destroy, @meal
+  %br
+  = link_to "order", new_meal_order_path(@meal)
 
 %br
 
-%p Description
-%p= @meal.description
+%p 
+  Description:
+  = @meal.description
 
-%p Category
-%p= @meal.category.name
+%p 
+  Category:
+  =@meal.category.name
 
-%p Quantity
-%p= "#{@meal.quantity} portions available"
+%p 
+  Quantity:
+  = "#{@meal.quantity} portions available"
 
-%p Price
-%p= "#{number_to_currency(@meal.price, unit: "£")} per portion"
+%p 
+  Price: 
+  = "#{number_to_currency(@meal.price, unit: "£")} /portion"
 
-%p Availability
-%p
+%p 
+  Availability:
+  %br
   = time_tag(@meal.start_at)
   %br
   = time_tag(@meal.end_at)
@@ -52,7 +59,7 @@
       = @meal.user.country
 
 - if current_user
-  = link_to "Place order!", new_meal_order_path(@meal) if can? :create, Order
+  = link_to "Order", new_meal_order_path(@meal) if can? :create, Order
 - else
   Want to order?
   = link_to "Log in", new_user_session_path
