@@ -25,6 +25,7 @@ myCalc.initialize = function() {
     myCalc.recalculateTotal([price]);
   });
 };
+// TODO check whether price about needs to be in square brackets? "([price])"
 
 myCalc.recalculateTotal = function(price) {
   var quantity = myCalc.quantityElement.val();
