@@ -2,25 +2,19 @@
 
 %br
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Meal
-  .col-xs-9
+
+    %p Meal
+ 
     %p= link_to @order.meal.name, @order.meal if can? :read, @order.meal
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Chef
-  .col-xs-9
+
+    %p Chef
+  
     %p= link_to @order.meal.user.chef_name, @order.meal.user if can? :read, @order.meal.user
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Address
-  .col-xs-9
+
+    %p Address
+ 
     %p= @order.meal.user.address
 
 %br
@@ -37,18 +31,13 @@
   = f.input :fetch_at
   = f.input :comments
 
-  .row
-    .col-xs-3
-      %p.pull-right
-        %b Quantity
-    .col-xs-9
+  
+      %p Quantity
+    
       %p= "#{@order.meal.quantity} portions available"
 
-  .row
-    .col-xs-3
-      %p.pull-right
-        %b Price
-    .col-xs-9
+      %p Price
+   
       %p= number_to_currency(@order.meal.price, unit: "£")
 
 
@@ -56,13 +45,10 @@
 
   #hiddenprice= @order.meal.price
 
-  .row
-    .col-xs-3
-      %p.pull-right
-        %b Total
-    .col-xs-9
+  
+      %p Total
+    
       %p
-        %b
           %span#totalshow £...
 
   = f.input :credit_card_name

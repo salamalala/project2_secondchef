@@ -2,60 +2,43 @@
 
 %br
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Meal
-  .col-xs-9
+
+    %p Meal
+
     %p= link_to @order.meal.name, @order.meal
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Chef
-  .col-xs-9
+
+    %p Chef
+  
     %p= link_to @order.meal.user.chef_name, @order.meal.user
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Address
-  .col-xs-9
+
+    %p Address
+  
     %p= @order.meal.user.address
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Ordered by
-  .col-xs-9
+
+    %p Ordered by
+  
     %p= @order.user.first_name
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Fetch at
-  .col-xs-9
+
+    %p Fetch at
+  
     %p= time_tag(@order.fetch_at)
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Quantity
-  .col-xs-9
+
+    %p Quantity
+  
     %p= "#{@order.quantity} portions ordered"
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Total price
-  .col-xs-9
+
+    %p Total price
+  
     %p= number_to_currency(@order.total, unit: "£")
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Review
-  .col-xs-9
+
+    %p Review
     %p
       - if !@order.review.nil?
         = ("★" * @order.review.rating) + ("☆" * (5 - @order.review.rating))

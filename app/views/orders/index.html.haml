@@ -4,11 +4,10 @@
 
 - @orders.each do |order|
   = link_to order do
-    .panel.panel-default
-      .panel-body
+  
         = "Order ##{order.id} - #{order.meal.name}"
         &nbsp;
-        .pull-right
+     
           = number_to_currency(order.total, unit: "£")
 
 = paginate @orders

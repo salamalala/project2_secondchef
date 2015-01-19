@@ -4,25 +4,16 @@
 
 %br
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Full name
-  .col-xs-9
+
+    %p Full name
     %p= @user.name
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Description
-  .col-xs-9
+
+    %p Description
     %p= @user.description
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Address
-  .col-xs-9
+
+    %p Address
     %p
       = link_to "#" do
         - if !@user.address_line_1.blank?
@@ -40,18 +31,12 @@
         - if !@user.country.blank?
           = @user.country
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Phone
-  .col-xs-9
+
+    %p Phone
     %p= @user.phone_number
 
-.row
-  .col-xs-3
-    %p.pull-right
-      %b Avg. rating
-  .col-xs-9
+
+    %p Avg. rating
     %p= @user.average_rating.blank? ? "No reviews yet" : @user.average_rating
 
 %br
@@ -62,14 +47,12 @@
 
   - if @reviews.any?
     - @reviews.each do |review|
-      .panel.panel-default
-        .panel-body
+      
           = ("★" * review.rating) + ("☆" * (5 - review.rating))
           &nbsp;
           %i
             by
             = review.order.user.first_name
-          .pull-right
             = time_tag(review.order.created_at)
     / = paginate @reviews
   - else
@@ -84,12 +67,10 @@
   - if @current_meals.any?
     - @current_meals.each do |meal|
       = link_to meal do
-        .panel.panel-default
-          .panel-body
             = meal.name
             &nbsp;
             = number_to_currency(meal.price, unit: "£")
-            .pull-right
+      
               = time_tag(meal.start_at)
               %br
               = time_tag(meal.end_at)
@@ -101,12 +82,9 @@
   - if @archived_meals.any?
     - @archived_meals.each do |meal|
       = link_to meal do
-        .panel.panel-default
-          .panel-body
             = meal.name
             &nbsp;
             = number_to_currency(meal.price, unit: "£")
-            .pull-right
               = time_tag(meal.start_at)
               %br
               = time_tag(meal.end_at)
@@ -123,12 +101,11 @@
     - if @current_orders_received.any?
       - @current_orders_received.each do |order|
         = link_to order do
-          .panel.panel-default
-            .panel-body
+         
               = "Order ##{order.id} - #{order.meal.name}"
               &nbsp;
               = number_to_currency(order.total, unit: "£")
-              .pull-right
+             
                 = time_tag(order.created_at)
     - else
       No orders received yet
@@ -138,12 +115,10 @@
     - if @archived_orders_received.any?
       - @archived_orders_received.each do |order|
         = link_to order do
-          .panel.panel-default
-            .panel-body
+         
               = "Order ##{order.id} - #{order.meal.name}"
               &nbsp;
               = number_to_currency(order.total, unit: "£")
-              .pull-right
                 = time_tag(order.created_at)
       / = paginate @archived_orders_received
     - else
