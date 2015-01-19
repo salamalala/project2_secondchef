@@ -1,16 +1,9 @@
 %h1 My orders
 
-%br
-
 - @orders.each do |order|
   = link_to order do
-
-  
     = "Order ##{order.id} - #{order.meal.name}"
     &nbsp;
-     
     = number_to_currency(order.total, unit: "£")
-
-
 
 = paginate @orders
