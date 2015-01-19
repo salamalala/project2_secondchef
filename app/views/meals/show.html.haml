@@ -5,53 +5,51 @@
 
 %br
 
-    %p Description
-    %p= @meal.description
+%p Description
+%p= @meal.description
 
-    %p Category
-    %p= @meal.category.name
+%p Category
+%p= @meal.category.name
 
-    %p Quantity
-    %p= "#{@meal.quantity} portions available"
+%p Quantity
+%p= "#{@meal.quantity} portions available"
 
-    %p Price
-    %p= "#{number_to_currency(@meal.price, unit: "£")} per portion"
+%p Price
+%p= "#{number_to_currency(@meal.price, unit: "£")} per portion"
 
-    %p Availability
-    %p
-      = time_tag(@meal.start_at)
-      %br
-      = time_tag(@meal.end_at)
+%p Availability
+%p
+  = time_tag(@meal.start_at)
+  %br
+  = time_tag(@meal.end_at)
 
 %br
 
 = link_to @meal.user do
- 
-        - if !@meal.user.address_line_1.blank?
-          = @meal.user.address_line_1
-          %br
-        - if !@meal.user.address_line_2.blank?
-          = @meal.user.address_line_2
-          %br
-        - if !@meal.user.city.blank?
-          = @meal.user.city
-          %br
-        - if !@meal.user.postcode.blank?
-          = @meal.user.postcode
-          %br
-        - if !@meal.user.country.blank?
-          = @meal.user.country
-          %br
-      %p
-          = @meal.user.chef_name
-        %br
-        %i
-          = @meal.user.name
-      %p
-        - if @meal.user.average_rating.blank?
-          No reviews yet
-        - else
-          = "Avg. rating: #{@meal.user.average_rating}"
+  %p
+    = @meal.user.chef_name
+  %p
+    = @meal.user.name
+  %p
+    - if @meal.user.average_rating.blank?
+      No reviews yet
+    - else
+      = "Avg. rating: #{@meal.user.average_rating}"
+  %p
+    - if !@meal.user.address_line_1.blank?
+      = @meal.user.address_line_1
+      %br
+    - if !@meal.user.address_line_2.blank?
+      = @meal.user.address_line_2
+      %br
+    - if !@meal.user.city.blank?
+      = @meal.user.city
+      %br
+    - if !@meal.user.postcode.blank?
+      = @meal.user.postcode
+      %br
+    - if !@meal.user.country.blank?
+      = @meal.user.country
 
 - if current_user
   = link_to "Place order!", new_meal_order_path(@meal) if can? :create, Order
