@@ -14,3 +14,63 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+// mapping
+
+var myMap = myMap || {};
+
+myMap.initialize = function() {
+  myMap.locatorElement.on('click', function(){
+    myMap.getPosition();
+    console.log("clicked");
+  });
+};
+
+myMap.getPosition = function(){
+  if (navigator.geolocation) {
+    var geolocation = navigator.geolocation.getCurrentPosition(myMap.geolocationSuccess, myMap.geolocationFail);
+    console.log("geolocated")
+  } else {
+    alert("Geolocation not enabled.");
+  };
+};
+
+myMap.geolocationSuccess = function(position){
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  // var data = { latitude: latitude, longitude: longitude };
+  myMap.latitudeElement.val(latitude);
+  myMap.longitudeElement.val(longitude);
+  console.log("form updated");
+};
+
+// myMap.submitAjax = function(data){
+//   console.log("sending ajax");
+//   console.log(data);
+//   $.ajax({
+//     type: "GET",
+//     url: "/meals",
+//     data: data,
+//     dataType: 'json',
+//     success: function(response){
+//       console.log("success");
+//       console.log(response);
+//       // updateBalance('#current_balance', response["current_balance"]);
+//       // updateBalance('#savings_balance', response["savings_balance"]);
+//     }
+//   });
+// };
+
+myMap.geolocationFail = function(){
+  alert("Geolocation failed.")
+};
+
+$(function(){
+  myMap.locatorElement = $("#locator");
+  myMap.latitudeElement = $("#latitude");
+  myMap.longitudeElement = $("#longitude");
+  myMap.finderElement = $("#finder");
+  myMap.initialize();
+});
+
