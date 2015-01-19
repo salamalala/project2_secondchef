@@ -1,15 +1,18 @@
-%h1 Place order
+/ %h1 Complete Order
 
 %br
 
-%p Meal
-%p= link_to @order.meal.name, @order.meal if can? :read, @order.meal
+%p 
+  Meal:
+  = link_to @order.meal.name, @order.meal if can? :read, @order.meal
 
-%p Chef
-%p= link_to @order.meal.user.chef_name, @order.meal.user if can? :read, @order.meal.user
+%p 
+  Chef:
+  = link_to @order.meal.user.chef_name, @order.meal.user if can? :read, @order.meal.user
 
-%p Address
-%p= @order.meal.user.address
+%p 
+  Address:
+  = @order.meal.user.address
 
 %br
 
@@ -23,26 +26,32 @@
           %li= msg
 
   = f.input :fetch_at
+  %br
   = f.input :comments
 
-  %p Quantity
-  %p= "#{@order.meal.quantity} portions available"
+  %p 
+    Quantity:
+    = "#{@order.meal.quantity} available"
 
-  %p Price
-  %p= number_to_currency(@order.meal.price, unit: "£")
+  %p 
+    Price:
+    = number_to_currency(@order.meal.price, unit: "£")
 
   = f.input :quantity, collection: 1..@order.meal.quantity, prompt: "Select quantity"
 
   #hiddenprice= @order.meal.price
 
-  %p Total
   %p
+    Total:
+    %br
     %span#totalshow £...
 
   = f.input :credit_card_name
+  %br
   = f.input :credit_card_number
+  %br
   = f.input :credit_card_expiry
-
+  %br
   = f.hidden_field :meal_id
   = f.hidden_field :price
   = f.button :submit
