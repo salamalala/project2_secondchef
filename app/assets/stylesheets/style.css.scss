@@ -1,8 +1,87 @@
 body{
- font-family: $main_font;
+  @include outer-container;
+  font-family: $main_font;
   color: $main_font_color;
 
 
+  .list_meals{
+    border-bottom: 0.5px #305c69;
+  }
+
+  .btn{
+    padding: 10px 30px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    border: 3px solid #fff;
+    background-color: #376978; // grey
+    color: #fff;
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      }
+    &:hover{
+      color: #fff;
+      background: #305c69; // grey
+      }
+  }
+
+  // trying to style the select button
+  // select {
+  //     padding: 10px 30px;
+  //     color: purple;
+  //     border: transparent;
+  //     border-radius: 0;
+  //     text-transform: uppercase;
+  //     letter-spacing: 1px;
+  //     -webkit-appearance: none;
+  //     -moz-appearance: none;
+  //     appearance: none;
+  //     background: url("../images/arrow_down.png") 96% / 15% no-repeat #eee;
+  //     option{
+  //       background-color: purple;
+  //     }
+  // }
+ 
+
+  a:link {
+      text-decoration: none;
+      color: #282828;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #282828;
+  }
+
+  a:hover {
+      text-decoration: underline;
+      color: #282828;
+  }
+
+  a:active {
+      text-decoration: underline;
+      color: #282828;
+  }
+
+  footer{
+    margin-top: 100px;
+    background-color: #282828;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    a:link{
+      color: #fff;
+    } 
+  }
 
 
 
