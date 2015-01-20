@@ -2,7 +2,7 @@
 
 %button{id: "locator"} Get location
 
-= form_tag "/meals", method: "get" do
+= form_tag "/meals", method: "get", id: :search_form, remote: :true do
   = text_field_tag :latitude, @latitude
   = text_field_tag :longitude, @longitude
   %br
