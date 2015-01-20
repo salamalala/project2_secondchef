@@ -1,75 +1,78 @@
-body{
-  @include outer-container;
-  font-family: $main_font;
-  color: $main_font_color;
+  body{
+    @include outer-container;
+    font-family: $main_font;
+    color: $main_font_color;
+    // background: image-url("background_image_cook.jpg");
 
 
-  .list_meals{
-    border-bottom: 0.5px $turquoise_greys;
-  }
+    .list_meals{
+      border-bottom: 0.5px $turquoise_greys;
+    }
 
-  .btn{
-    padding: 10px 30px;
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    outline: none;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    border: 3px solid #fff;
-    background-color: $button_dark_turquoise;
-    color: #fff;
-    &:after {
-      content: '';
-      position: absolute;
-      z-index: -1;
+    .btn{
+      padding: 10px 30px;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      outline: none;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
-      }
-    &:hover{
+      border: 3px solid #fff;
+      background-color: $button_dark_turquoise;
       color: #fff;
-      background: $turquoise_greys; 
+      &:after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
       }
-  }
+      &:hover{
+        color: #fff;
+        background: $turquoise_greys; 
+      }
+    }
 
   // trying to style the select button
-  // select {
-  //     padding: 10px 30px;
-  //     color: purple;
-  //     border: transparent;
-  //     border-radius: 0;
-  //     text-transform: uppercase;
-  //     letter-spacing: 1px;
-  //     -webkit-appearance: none;
-  //     -moz-appearance: none;
-  //     appearance: none;
-  //     background: url("../images/arrow_down.png") 96% / 15% no-repeat #eee;
-  //     option{
-  //       background-color: purple;
-  //     }
-  // }
- 
+  select {
+    padding: 10px 30px;
+    color: #fff;
+    border: transparent;
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    background: image-url("arrow_down.png") 92% 50% no-repeat  $button_dark_turquoise;
+
+    option{
+      background-color: purple;
+    }
+  }
+
 
   a:link {
-      text-decoration: none;
-      color: $main_font_color;
+    text-decoration: none;
+    color: $main_font_color;
   }
 
   a:visited {
-      text-decoration: none;
-      color: $main_font_color;
+    text-decoration: none;
+    color: $main_font_color;
   }
 
   a:hover {
-      text-decoration: underline;
-      color: $main_font_color;
+    text-decoration: underline;
+    color: $main_font_color;
   }
 
   a:active {
-      text-decoration: underline;
-      color: $main_font_color;
+    text-decoration: underline;
+    color: $main_font_color;
   }
 
   footer{
@@ -83,5 +86,5 @@ body{
     } 
   }
 
-
+}
 }
