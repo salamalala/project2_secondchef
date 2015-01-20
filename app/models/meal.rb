@@ -11,8 +11,22 @@ class Meal < ActiveRecord::Base
   validates :category_id, :name, :description, :price, :quantity, :start_at, :end_at, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 20 }
-  # validates :start_at > Time.zone.now
-  # validates :end_at > :start_at
+
+  validate :start_must_be_in_the_future
+  validate :end_must_be_in_the_future
+  validate :end_must_be_after_start
+
+  def start_must_be_in_the_future
+    errors.add(:start_at, "must be in the future") if start_at < Time.zone.now
+  end
+
+  def end_must_be_in_the_future
+    errors.add(:end_at, "must be in the future") if end_at < Time.zone.now
+  end
+
+  def end_must_be_after_start
+    errors.add(:end_at, "must be after start") if end_at < start_at
+  end
 
   geocoded_by :chef_address
   after_validation :geocode
