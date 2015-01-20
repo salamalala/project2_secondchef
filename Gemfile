@@ -9,11 +9,9 @@ gem 'kaminari'
 gem 'simple_form'
 gem 'country_select'
 gem 'carrierwave'
-<<<<<<< HEAD
 gem 'omniauth-facebook'
-=======
 gem 'rmagick'
->>>>>>> dev_julia
+
 
 group :development, :test do
   gem 'pry-rails'
