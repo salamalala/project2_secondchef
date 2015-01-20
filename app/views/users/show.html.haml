@@ -1,10 +1,11 @@
 %h1
   = "#{@user.chef_name}"
-
-  = link_to "edit", edit_user_path(@user) if can? :update, @user
   %br
-  = link_to "Add Meal", new_meal_path if can? :create, Meal
-  = link_to "View Orders", new_meal_path if can? :create, Meal
+  = link_to "edit", edit_user_path(@user), class: "btn" if can? :update, @user
+  %br
+  = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
+  %br
+  = link_to "View Orders", new_meal_path, class: "btn" if can? :create, Meal
  
 
 %p 
@@ -76,22 +77,23 @@
   - else
     No current meals 
     %br
-    = link_to "Add Meal", new_meal_path if can? :create, Meal
+    = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
 
   %h3 Archived Meals
 
   - if @archived_meals.any?
     %ul
     - @archived_meals.each do |meal|
+      %li
 
-      = link_to meal do
-        = meal.name
-        &nbsp;
-        |
-        = number_to_currency(meal.price, unit: "£") 
-        / = time_tag(meal.start_at)
-        |
-        = time_tag(meal.end_at) 
+        = link_to meal do
+          = meal.name
+          &nbsp;
+          |
+          = number_to_currency(meal.price, unit: "£") 
+          / = time_tag(meal.start_at)
+          |
+          = time_tag(meal.end_at) 
 
       %br
 

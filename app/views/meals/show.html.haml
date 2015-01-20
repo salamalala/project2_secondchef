@@ -1,9 +1,11 @@
 %h1
   = @meal.name
-  = link_to "edit", edit_meal_path(@meal) if can? :update, @meal
-  = link_to "remove", @meal, :method => :delete, :data => { :confirm => 'Are you sure?' } if can? :destroy, @meal
   %br
-  = link_to "order", new_meal_order_path(@meal)
+  = link_to "edit", edit_meal_path(@meal), class: "btn" if can? :update, @meal
+  %br
+  = link_to "remove", @meal, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn" if can? :destroy, @meal
+  %br
+  = link_to "order", new_meal_order_path(@meal), class: "btn"
 
 %br
 
@@ -64,7 +66,7 @@
 
 
 - if current_user
-  = link_to "Order", new_meal_order_path(@meal) if can? :create, Order
+  = link_to "Order", new_meal_order_path(@meal), class: "btn" if can? :create, Order
 - else
   Want to order?
   = link_to "Log in", new_user_session_path
