@@ -24,6 +24,7 @@ class MealsController < ApplicationController
     else
       @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.page(params[:page])
     end
+    @category_name = Category.find(params[:category][:category_id]).name
     respond_with(@meals)
   end
 
