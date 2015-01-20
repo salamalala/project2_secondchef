@@ -1,14 +1,58 @@
+
+.title_image {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1000;
+    position: fixed;
+    height: 500px;
+    background-image: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.second_chef {
+  font-family: Pacifico;
+  float: left;
+  color: grey;
+  font-size: 40px;
+  padding-bottom: 20px;
+}
+
+
+.navbar {
+ width: 100%;
+ z-index: 100;
+ position: fixed;
+ // position: absolute;
+ top: 0;
+ list-style-type: none;
+ // padding-top: 10px;
+ background: white;
+ height: 50px;
+}
+
+.navbar li {
+  display: inline;
+  float: right;
+}
+
+.navbar li a {
+  padding: 30px 30px;
+  text-align: right;
+  color: grey;
+  
+}
+
+
 body{
   font-family: $main_font;
   color: $main_font_color;
+  padding-top: 500px;
 
 
-<<<<<<< HEAD
-  // background: image-url("hamburger.gif");
-  // background-repeat: no-repeat;
-  // background-size: 50%;
-=======
->>>>>>> 3730bdb610c3ad9d739eaf8a46bae55a4981d9d2
+
   text-align: center;
 
 
@@ -19,41 +63,9 @@ body{
 
   // }
 
-  .title_image {
-      top: 0;
-      left: 0;
-      width: 120%;
-      z-index: -1000;
-      position: fixed;
-      height: 500px;
-      background-image: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-  }
-
-  
-<<<<<<< HEAD
-  // background: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
-  // background-repeat: no-repeat;
 
 
-  // .navbar {
-  //   list-style-type: none;
-  //   li {
-  //     display: inline;
-      
-  //     a {
-  //       color: grey;
-  //       padding: 30px 150px;
-  //       background: white;
-  //     }
-  //   }
-  // }
-
-
-=======
->>>>>>> 3730bdb610c3ad9d739eaf8a46bae55a4981d9d2
+ 
 
   .list_meals{
     border-bottom: 0.5px $turquoise_greys;
