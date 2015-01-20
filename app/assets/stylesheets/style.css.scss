@@ -2,9 +2,6 @@ body{
   @include outer-container;
   font-family: $main_font;
   color: $main_font_color;
-<<<<<<< HEAD
-=======
-
 
   .list_meals{
     border-bottom: 0.5px $turquoise_greys;
@@ -84,7 +81,4 @@ body{
       color: #fff;
     } 
   }
-
-
->>>>>>> d56994d763592aaf4dcb50da7308e653c50dd2bf
 }
