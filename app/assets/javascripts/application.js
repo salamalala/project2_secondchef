@@ -40,6 +40,28 @@ $(function(){
   myCalc.initialize();
 });
 
+
+// ajax meal index
+
+var myMeals = myMeals || {};
+
+$(function(){
+
+  $('#search_form').
+  on('ajax:success', function(evt, data, status, xhr){
+    $('#meal_list').html(data);
+  }).
+  on('ajax:error', function(xhr, status, error){
+    console.log('error! :', error);
+  });
+  
+  $('#search').on('keyup', function(){
+    $('#search_form').submit();
+  })
+  
+
+});
+
 // mapping
 
 var myMap = myMap || {};
@@ -99,5 +121,7 @@ $(function(){
 });
 
 
- 
+
+
+
 
