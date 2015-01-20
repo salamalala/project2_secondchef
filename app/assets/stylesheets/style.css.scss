@@ -1,39 +1,63 @@
-  body{
-    @include outer-container;
-    font-family: $main_font;
-    color: $main_font_color;
-    // background: image-url("background_image_cook.jpg");
+body{
+  @include outer-container;
+  font-family: $main_font;
+  color: $main_font_color;
 
-    .list_meals{
-      border-bottom: 0.5px $turquoise_greys;
-    }
+  // background: image-url("hamburger.gif");
+  // background-repeat: no-repeat;
+  // background-size: 50%;
+  text-align: center;
+  
+  background: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  // .navbar {
+  //   list-style-type: none;
+  //   li {
+  //     display: inline;
+  //     a {
+  //       background: red;
+  //       color: white;
+  //       padding: 10px 10px;
+  //       border-radius: 7px;
+  //     }
+  //   }
+  // }
 
 
-    .btn{
-      padding: 10px 30px;
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      outline: none;
+
+  .list_meals{
+    border-bottom: 0.5px $turquoise_greys;
+    list-style-type: none;
+  }
+
+
+  .btn{
+    padding: 10px 30px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    border: 3px solid #fff;
+    background-color: $button_dark_turquoise;
+    color: #fff;
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: -1;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
-      border: 3px solid #fff;
-      background-color: $button_dark_turquoise;
-      color: #fff;
-      &:after {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        transition: all 0.3s;
-      }
-      &:hover{
-        color: #fff;
-        background: $turquoise_greys; 
-      }
     }
+    &:hover{
+      color: #fff;
+      background: $turquoise_greys; 
+    }
+  }
 
   // trying to style the select button
   select {
@@ -87,6 +111,7 @@
   }
 
 
-}
 
 }
+
+

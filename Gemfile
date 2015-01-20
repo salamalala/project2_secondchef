@@ -10,6 +10,8 @@ gem 'simple_form'
 gem 'country_select'
 gem 'carrierwave'
 gem 'omniauth-facebook'
+gem 'rmagick'
+
 
 group :development, :test do
   gem 'pry-rails'

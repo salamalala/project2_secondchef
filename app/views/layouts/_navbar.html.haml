@@ -1,7 +1,4 @@
-%h1
-  = link_to "UBERCOOK", root_path
-
-%ul
+%p  
   %li= link_to "Tonight's meals", meals_path
   - if current_user
     %li= link_to "My orders", orders_path
@@ -14,3 +11,17 @@
   - else
     %li= link_to "Log in", new_user_session_path
     %li= link_to "Register", new_user_registration_path
+
+  .navbar
+    - if current_user
+      %li= link_to "My orders", orders_path
+      - if current_user.role?(:chef)
+        %li= link_to "My chef profile", user_path(current_user)
+      - else current_user
+        %li= link_to "Become a chef!", edit_user_path(current_user)
+      %li= link_to "My account", edit_user_registration_path
+      %li= link_to "Log out", destroy_user_session_path, method: :delete
+    - else
+      %li= link_to "Log in", new_user_session_path
+      %li= link_to "Register", new_user_registration_path
+
