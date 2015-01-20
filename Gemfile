@@ -9,6 +9,7 @@ gem 'kaminari'
 gem 'simple_form'
 gem 'country_select'
 gem 'carrierwave'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'pry-rails'
