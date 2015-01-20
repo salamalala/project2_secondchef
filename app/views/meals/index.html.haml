@@ -2,33 +2,23 @@
 
 %button{id: "locator"} Get location
 
-= form_tag "/meals", method: "get" do
+= form_tag "/meals", method: "get", id: :search_form, remote: :true do
   = text_field_tag :latitude, @latitude
   = text_field_tag :longitude, @longitude
   %br
+  Search for a meal: 
   = text_field_tag :search, params[:search]
+  %br
   Category:
   = collection_select :category, :category_id, Category.all, :id, :name, {prompt: "All categories", selected: params[:category]&&params[:category][:category_id]}
   = submit_tag "Update results", id: "finder", class: "btn"
 
 
-    
-
-
 
 -if !@meals.blank? 
   %ul
-    - @meals.each do |meal|
-      .list_meals
-        %li
-          = link_to meal do
-            = meal.name
-            &nbsp;
-            = number_to_currency(meal.price, unit: "£")
-            &nbsp;
-            = "#{number_with_precision(meal.distance, precision: 1)} miles" 
-            //when doing a search with the gem it would adjust that to compass point. 
-            = Geocoder::Calculations.compass_point(meal.bearing)
+    #meal_list
+      = render @meals
 -else
   %p There aren't any meals in that category yet.  
 

@@ -29,7 +29,11 @@ class MealsController < ApplicationController
       @meals = Meal.near([@latitude, @longitude], @distance).available.tonight #.page(params[:page])
     end
 
-    respond_with(@meals)
+    if request.xhr?
+      render @meals, layout: false 
+    else
+      respond_with(@meals)
+    end
   end
 
   def show
