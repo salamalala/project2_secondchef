@@ -1,12 +1,14 @@
 body{
-  // @include outer-container;
   font-family: $main_font;
   color: $main_font_color;
 
 
+<<<<<<< HEAD
   // background: image-url("hamburger.gif");
   // background-repeat: no-repeat;
   // background-size: 50%;
+=======
+>>>>>>> 3730bdb610c3ad9d739eaf8a46bae55a4981d9d2
   text-align: center;
 
 
@@ -18,7 +20,9 @@ body{
   // }
 
   .title_image {
-      width: 100%;
+      top: 0;
+      left: 0;
+      width: 120%;
       z-index: -1000;
       position: fixed;
       height: 500px;
@@ -28,21 +32,8 @@ body{
       background-position: 50% 50%;
   }
 
-  // .title_image {
-    
-  //   // overflow: hidden;
   
-  //   &:before {
-  //     content: "";
-  //     display: block;
-  //     padding-top: 50%;
-  //     // padding-bottom: 50%;
-  //     // z-index: -100;
-  //     // position: absolute;
-  //   }
-  // }
-
-  
+<<<<<<< HEAD
   // background: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
   // background-repeat: no-repeat;
 
@@ -61,6 +52,8 @@ body{
   // }
 
 
+=======
+>>>>>>> 3730bdb610c3ad9d739eaf8a46bae55a4981d9d2
 
   .list_meals{
     border-bottom: 0.5px $turquoise_greys;
