@@ -1,10 +1,6 @@
 %h1
   = @meal.name
-  %br
-  = link_to "edit", edit_meal_path(@meal), class: "btn" if can? :update, @meal
-  %br
-  = link_to "remove", @meal, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn" if can? :destroy, @meal
-  %br
+ 
   = link_to "order", new_meal_order_path(@meal), class: "btn"
 
 %br
@@ -38,8 +34,13 @@
 
 .chef_shortinfo
   = link_to @meal.user do
+
+    %p
+      = image_tag(@meal.user.image.thumb.url)
+
     %p
       = @meal.user.chef_name
+
     %p
       = @meal.user.name
     %p
@@ -72,3 +73,8 @@
   = link_to "Log in", new_user_session_path
   or
   = link_to "Register", new_user_registration_path
+
+
+  = link_to "edit", edit_meal_path(@meal), class: "btn" if can? :update, @meal
+  %br
+  = link_to "remove", @meal, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn" if can? :destroy, @meal

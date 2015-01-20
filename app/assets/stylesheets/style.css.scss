@@ -74,7 +74,7 @@ html {
       font-size: 4.5em; 
       background-color: rgba(255, 255, 255, 0.5);
       text-align: center;
-      color: #9C6302;
+      color: #EE7600;
       position: absolute;
       width: 100%;
     }
@@ -88,10 +88,7 @@ html {
       background-color: #fff;
       z-index: 100;
 
-      .list_meals{
-        border-bottom: 0.5px $turquoise_greys;
-        list-style-type: none;
-      }
+     
 
 
       .btn{
@@ -184,13 +181,30 @@ html {
       padding-left: 0;
     }
 
-    #meal_list {
+    #meal_list, #order_list {
       li {
         padding: 20px 0;
         border-bottom: 1px solid black;  
       }
     }
 
+    #order_list a 
+
+    .chef_shortinfo {
+      text-decoration: none;
+      padding: 20px;
+      background-color: gray;
+    }
+
+    .chef_shortinfo img {
+      float: right;
+      margin: right;
+    }
+
+    .list_meals, #order_list{
+      border-bottom: 0.5px $turquoise_greys;
+      list-style-type: none;
+    }
     
 
     footer{

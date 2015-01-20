@@ -7,46 +7,47 @@
   %br
   = link_to "View Orders", new_meal_path, class: "btn" if can? :create, Meal
  
-%p
-  = image_tag(@user.image.thumb.url)
+.chef_shortinfo
+  %p
+    = image_tag(@user.image.thumb.url)
 
-%p 
-  Full name: 
-  = @user.name
+  %p 
+    Full name: 
+    = @user.name
 
-%p 
-  Description:
-  = @user.description
-
-
-%p 
-  Address:
-  %br
-
-  = link_to "#" do
-    - if !@user.address_line_1.blank?
-      = @user.address_line_1
-      %br
-    - if !@user.address_line_2.blank?
-      = @user.address_line_2
-      %br
-    - if !@user.city.blank?
-      = @user.city
-      %br
-    - if !@user.postcode.blank?
-      = @user.postcode
-      %br
-    - if !@user.country.blank?
-      = @user.country
+  %p 
+    Description:
+    = @user.description
 
 
-%p
-  Phone:
-  = @user.phone_number
+  %p 
+    Address:
+    %br
 
-%p 
-  Avg. rating:
-  = @user.average_rating.blank? ? "No reviews yet" : @user.average_rating
+    = link_to "#" do
+      - if !@user.address_line_1.blank?
+        = @user.address_line_1
+        %br
+      - if !@user.address_line_2.blank?
+        = @user.address_line_2
+        %br
+      - if !@user.city.blank?
+        = @user.city
+        %br
+      - if !@user.postcode.blank?
+        = @user.postcode
+        %br
+      - if !@user.country.blank?
+        = @user.country
+
+
+  %p
+    Phone:
+    = @user.phone_number
+
+  %p 
+    Avg. rating:
+    = @user.average_rating.blank? ? "No reviews yet" : @user.average_rating
 
 - if @user.role? :chef
 
