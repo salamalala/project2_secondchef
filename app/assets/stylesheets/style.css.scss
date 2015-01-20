@@ -1,5 +1,3 @@
-
-
 body{
   @include outer-container;
   font-family: $main_font;
@@ -9,10 +7,10 @@ body{
   // background-repeat: no-repeat;
   // background-size: 50%;
   text-align: center;
-  
   background: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
+  
 
   // .navbar {
   //   list-style-type: none;
@@ -53,11 +51,11 @@ body{
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
-      }
+    }
     &:hover{
       color: #fff;
       background: $turquoise_greys; 
-      }
+    }
   }
 
   // trying to style the select button
@@ -76,26 +74,26 @@ body{
   //       background-color: purple;
   //     }
   // }
- 
+
 
   a:link {
-      text-decoration: none;
-      color: $main_font_color;
+    text-decoration: none;
+    color: $main_font_color;
   }
 
   a:visited {
-      text-decoration: none;
-      color: $main_font_color;
+    text-decoration: none;
+    color: $main_font_color;
   }
 
   a:hover {
-      text-decoration: underline;
-      color: $main_font_color;
+    text-decoration: underline;
+    color: $main_font_color;
   }
 
   a:active {
-      text-decoration: underline;
-      color: $main_font_color;
+    text-decoration: underline;
+    color: $main_font_color;
   }
 
   footer{
@@ -108,3 +106,4 @@ body{
       color: #fff;
     } 
   }
+}
