@@ -19,7 +19,8 @@
           &nbsp;
           = number_to_currency(meal.price, unit: "£")
           &nbsp;
-          = "#{number_with_precision(meal.distance, precision: 1)} miles"
+          = "#{number_with_precision(meal.distance, precision: 1)} miles" 
+          //when doing a search with the gem it would adjust that to compass point. 
           = Geocoder::Calculations.compass_point(meal.bearing)
 
 = paginate @meals
