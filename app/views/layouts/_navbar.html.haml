@@ -2,6 +2,7 @@
   = link_to "UBERCOOK", root_path
 
 %ul
+  %li= link_to "Tonight's meals", meals_path
   - if current_user
     %li= link_to "My orders", orders_path
     - if current_user.role?(:chef)
