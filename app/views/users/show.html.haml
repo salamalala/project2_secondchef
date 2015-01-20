@@ -8,7 +8,7 @@
   = link_to "View Orders", new_meal_path, class: "btn" if can? :create, Meal
  
 %p
-  = image_tag @user.image.url
+  = image_tag(@user.image.thumb.url)
 
 %p 
   Full name: 
