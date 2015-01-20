@@ -51,13 +51,15 @@ html {
 
 
   body{
+    // @include outer-container;
     font-family: $main_font;
     color: $main_font_color;
     padding-top: 500px;
     margin: 0 0 100px;
     font-size: 20px;
-
-    text-align: center;
+    letter-spacing: 1.5px;
+    
+    text-align: left;
 
 
     // .title_image img {
@@ -69,18 +71,19 @@ html {
     
     h1.title_font{
       font-family: $heading_font;
-      font-size: 7em; 
+      font-size: 4.5em; 
+      background-color: rgba(255, 255, 255, 0.5);
       text-align: center;
-      color: $button_color;
+      color: #9C6302;
       position: absolute;
-      width: 100%
-
+      width: 100%;
     }
 
     .main_part{
+      @include outer-container;
       width: 100%;
+      padding: 20px;
       position: relative;
-      left: 0;
       margin-top: 400px;
       background-color: #fff;
       z-index: 100;
@@ -93,7 +96,8 @@ html {
 
       .btn{
         @include span-columns(12);
-        margin: 5px 0;
+        margin-top: 20px;
+        margin-bottom: 40px;
         padding: 15px 30px;
         display: inline-block;
         text-transform: uppercase;
@@ -117,7 +121,7 @@ html {
         margin: 5px 0;
         text-align: center;
         padding: 15px 30px;
-        color: #fff;
+        color: $main_font_color;
         border: transparent;
         border-radius: 0;
         text-transform: uppercase;
@@ -126,11 +130,15 @@ html {
         -moz-appearance: none;
         appearance: none;
         position: relative;
-        background: image-url("arrow_down.png") 92% 50% no-repeat  $button_color;
+        background: image-url("arrow_down.png") 92% 50% no-repeat #A5B4B1;
       }
 
+      #latitude, #longitude {
+        display: none;
+      }
       input[type="text"]{
         @include span-columns(12);
+        background-color: #A5B4B1;
         margin: 5px 0;
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -140,6 +148,10 @@ html {
         border-radius: 0;
         text-transform: uppercase;
         letter-spacing: 1px;
+      }
+
+      ::-webkit-input-placeholder {
+        color: $main_font_color;
       }
 
 
@@ -165,6 +177,18 @@ html {
         color: $main_font_color;
       }
 
+    }
+
+
+    ul {
+      padding-left: 0;
+    }
+
+    #meal_list {
+      li {
+        padding: 20px 0;
+        border-bottom: 1px solid black;  
+      }
     }
 
     
