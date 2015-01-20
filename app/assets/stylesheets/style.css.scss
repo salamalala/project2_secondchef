@@ -1,5 +1,5 @@
 body{
-  @include outer-container;
+  // @include outer-container;
   font-family: $main_font;
   color: $main_font_color;
 
@@ -7,10 +7,43 @@ body{
   // background-repeat: no-repeat;
   // background-size: 50%;
   text-align: center;
+
+
+  // .title_image img {
+    
+  //   max-height: 300px;
+  //   max-width: 100%;
+
+  // }
+
+  .title_image {
+      width: 100%;
+      z-index: -1000;
+      position: fixed;
+      height: 500px;
+      background-image: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+  }
+
+  // .title_image {
+    
+  //   // overflow: hidden;
   
-  background: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
-  background-repeat: no-repeat;
-  background-size: 100%;
+  //   &:before {
+  //     content: "";
+  //     display: block;
+  //     padding-top: 50%;
+  //     // padding-bottom: 50%;
+  //     // z-index: -100;
+  //     // position: absolute;
+  //   }
+  // }
+
+  
+  // background: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
+  // background-repeat: no-repeat;
 
   // .navbar {
   //   list-style-type: none;
