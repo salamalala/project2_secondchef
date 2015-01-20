@@ -11,6 +11,7 @@ gem 'country_select'
 gem 'carrierwave'
 gem 'omniauth-facebook'
 gem 'rmagick'
+gem 'omniauth'
 
 
 group :development, :test do

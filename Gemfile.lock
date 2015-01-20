@@ -238,6 +238,7 @@ DEPENDENCIES
   kaminari
   meta_request
   neat
+  omniauth
   omniauth-facebook
   pg
   pry-byebug
