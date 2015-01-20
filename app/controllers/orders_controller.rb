@@ -24,10 +24,10 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    @meal = Meal.find(@order.meal_id)
-    @meal.quantity -= @order.quantity
-    @meal.save
     if @order.save
+      @meal = Meal.find(@order.meal_id)
+      @meal.quantity -= @order.quantity
+      @meal.save
       flash[:notice] = "Order created."
       respond_with(@order)
     else
