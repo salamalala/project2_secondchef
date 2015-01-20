@@ -19,12 +19,16 @@ class MealsController < ApplicationController
     @latitude = latitude.to_f
     @longitude = longitude.to_f
     @distance = 400
-    if !params[:category].blank? && !params[:category][:category_id].blank?
-      @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.where("category_id = ?", params[:category][:category_id].to_i).page(params[:page])
+    if !params[:category].blank? && !params[:category][:category_id].blank? && params[:search]
+      @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.where("name like ? AND category_id = ?", "%#{params[:search]}%", params[:category][:category_id].to_i)
+    elsif !params[:category].blank? && !params[:category][:category_id].blank?
+      @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.where("category_id = ?", params[:category][:category_id].to_i) #.page(params[:page])
+    elsif params[:search]
+      @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.where("name like ?", "%#{params[:search]}%")
     else
-      @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.page(params[:page])
+      @meals = Meal.near([@latitude, @longitude], @distance).available.tonight #.page(params[:page])
     end
-    # @category_name = Category.find(params[:category][:category_id]).name
+
     respond_with(@meals)
   end
 
