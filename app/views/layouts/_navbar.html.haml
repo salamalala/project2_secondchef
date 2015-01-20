@@ -1,15 +1,16 @@
 %p
-  %li= link_to "Tonight's meals", meals_path
-  - if user_signed_in?
-    %li= "Signed in as #{current_user.first_name}"
-    %li= link_to "My orders", orders_path
-    - if current_user.role?(:chef)
-      %li= link_to "My chef profile", user_path(current_user)
-    - else current_user
-      %li= link_to "Become a chef!", edit_user_path(current_user)
-    %li= link_to "My account", edit_user_registration_path
-    %li= link_to "Log out", destroy_user_session_path, method: :delete
-  - else
-    %li= link_to "Log in", new_user_session_path
-    %li= link_to "Register", new_user_registration_path
-    %li= link_to "Log in with Facebook", user_omniauth_authorize_path(:facebook)
+  .navbar
+    %li= link_to "Tonight's meals", meals_path
+    - if user_signed_in?
+      %li= "Signed in as #{current_user.first_name}"
+      %li= link_to "My orders", orders_path
+      - if current_user.role?(:chef)
+        %li= link_to "My chef profile", user_path(current_user)
+      - else current_user
+        %li= link_to "Become a chef!", edit_user_path(current_user)
+      %li= link_to "My account", edit_user_registration_path
+      %li= link_to "Log out", destroy_user_session_path, method: :delete
+    - else
+      %li= link_to "Log in", new_user_session_path
+      %li= link_to "Register", new_user_registration_path
+      %li= link_to "Log in with Facebook", user_omniauth_authorize_path(:facebook)
