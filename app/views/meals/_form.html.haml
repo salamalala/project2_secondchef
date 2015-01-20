@@ -8,7 +8,7 @@
           %li= msg
 
   = f.association :category
-  = f.input :name
+  = f.input :name, label: "Name of the dish"
   = f.input :description
   = f.input :price
   = f.input :quantity, collection: 0..50, prompt: "Select quantity"

@@ -2,6 +2,26 @@ html {
   position: relative;
   min-height: 100%;
 
+  a:link {
+    text-decoration: none;
+    color: $main_font_color;
+  }
+
+  a:visited {
+    text-decoration: none;
+    color: $main_font_color;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: $main_font_color;
+  }
+
+  a:active {
+    text-decoration: underline;
+    color: $main_font_color;
+  }
+
 
   .title_image {
       top: 0;
@@ -35,20 +55,41 @@ html {
    // padding-top: 10px;
    background: white;
    height: 50px;
+    ul{
+      padding-left: 0;
+      // display: none;
+      li {  
+        display: block;
+        width: 100%;
+        text-align: center;
+        background-color: #fff; 
+        border-bottom: solid 1px  #6D695E;
+        padding: 8px 0;  
+        a { 
+        color: #6D695E;
+        text-transform: uppercase;
+        text-decoration: none;
+          &:hover{
+            font-weight: 700;
+          }
+        }
+      }
+    } 
+    .nav-icon{
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 20px;
+      text-decoration: none;
+    }
+    .nav-icon:before{
+        background: image-url("hamburger_icon.gif") no-repeat;
+        color: #fff45a;
+        font-size: 2em;
+    }
   }
 
-  .navbar li {
-    display: inline;
-    float: right;
-  }
-
-  .navbar li a {
-    padding: 30px 30px;
-    text-align: right;
-    color: grey;
-    
-  }
-
+  
 
   body{
     // @include outer-container;
@@ -69,27 +110,46 @@ html {
 
     // }
     
-    h1.title_font{
-      font-family: $heading_font;
-      font-size: 4.5em; 
-      background-color: rgba(255, 255, 255, 0.5);
-      text-align: center;
-      color: #EE7600;
-      position: absolute;
-      width: 100%;
-    }
+    
 
     .main_part{
-      @include outer-container;
       width: 100%;
-      padding: 20px;
+      padding: 50px;
       position: relative;
-      margin-top: 400px;
       background-color: #fff;
       z-index: 100;
+      margin-bottom: 100px;
 
-     
+      h1.title_font{
+        font-family: $heading_font;
+        font-size: 3em; 
+        background-color: #fff;
+        text-align: center;
+        color: #EE7600;
+      }
 
+      input.btn{
+        @include span-columns(12);
+        margin-top: 20px;
+        margin-bottom: 40px;
+        padding: 15px 30px;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        outline: none;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+        border: none;
+        background-color: #5C584F;
+        color: #fff;
+        text-align: center;
+        &:hover{
+          color: #fff;
+          background: #4C4A42; 
+          text-decoration: none;
+        }
+      }
 
       .btn{
         @include span-columns(12);
@@ -106,20 +166,20 @@ html {
         border: none;
         background-color: $button_color;
         color: #fff;
+        text-align: center;
         &:hover{
           color: #fff;
-          background: $turquoise_greys; 
+          background: #D18500; 
+          text-decoration: none;
         }
       }
 
-
       select {
         @include span-columns(12);
-        margin: 5px 0;
+        margin: 5px 0 20px 0;
         text-align: center;
         padding: 15px 30px;
-        color: $main_font_color;
-        border: transparent;
+        border: solid 2px $main_font_color;
         border-radius: 0;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -127,53 +187,39 @@ html {
         -moz-appearance: none;
         appearance: none;
         position: relative;
-        background: image-url("arrow_down.png") 92% 50% no-repeat #A5B4B1;
+        background: image-url("arrow_down.gif") 92% 50% no-repeat #fff;
       }
 
       #latitude, #longitude {
         display: none;
       }
-      input[type="text"]{
+      input{
         @include span-columns(12);
-        background-color: #A5B4B1;
-        margin: 5px 0;
+        border: solid 2px $main_font_color;
+        margin: 5px 0 20px 0;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
         padding: 15px 30px;
-        border: transparent;
         border-radius: 0;
-        text-transform: uppercase;
         letter-spacing: 1px;
+      }
+
+      input[type="checkbox"]{
+        width: 25px;
+        height: 25px; 
+        padding: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin-right: 30px;     
       }
 
       ::-webkit-input-placeholder {
         color: $main_font_color;
+        font-style: italic;
       }
-
-
-
-
-      a:link {
-        text-decoration: none;
-        color: $main_font_color;
-      }
-
-      a:visited {
-        text-decoration: none;
-        color: $main_font_color;
-      }
-
-      a:hover {
-        text-decoration: underline;
-        color: $main_font_color;
-      }
-
-      a:active {
-        text-decoration: underline;
-        color: $main_font_color;
-      }
-
+     
     }
 
 
@@ -185,15 +231,22 @@ html {
       li {
         padding: 20px 0;
         border-bottom: 1px solid black;  
+        a:hover{
+          font-weight: 700;
+          text-decoration: none;
+        }
       }
     }
 
-    #order_list a 
+    // #order_list a 
 
     .chef_shortinfo {
       text-decoration: none;
       padding: 20px;
-      background-color: gray;
+      background-color: #EDF3F1;
+      -webkit-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
+      -moz-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
+      box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
     }
 
     .chef_shortinfo img {
@@ -204,6 +257,13 @@ html {
     .list_meals, #order_list{
       border-bottom: 0.5px $turquoise_greys;
       list-style-type: none;
+      .meal_name{
+        font-size: 1.2em;
+      }
+      .distance{
+        display: inline-block;
+        float: right;
+      }
     }
     
 
@@ -220,16 +280,14 @@ html {
       a {
         color: #fff;
         text-decoration: none;
+        &:link{
+          color: #fff;
+          text-decoration: none;
+        }
       } 
     }
-
-
-
 
   }
 
 }
-
-
-
 

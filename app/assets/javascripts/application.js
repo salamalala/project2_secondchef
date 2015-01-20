@@ -121,6 +121,15 @@ $(function(){
 });
 
 
+//hamburger-icon display
+$(document).ready(function(){
+  $('.nav-icon').on('click', function(e){
+    e.preventDefault();
+    $('.navbar ul').slideToggle();
+  });
+});
+
+
 
 
 
