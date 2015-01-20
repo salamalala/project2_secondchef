@@ -7,7 +7,7 @@
   = text_field_tag :longitude, @longitude
   %br
   Category:
-  = collection_select :category, :category_id, Category.all, :id, :name, include_blank: "Choose a category"
+  = collection_select :category, :category_id, Category.all, :id, :name, prompt: "Choose a category", selected: :option
   = submit_tag "Update results", id: "finder", class: "btn"
 
 %ul
