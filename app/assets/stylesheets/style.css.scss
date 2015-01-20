@@ -1,183 +1,193 @@
-
-.title_image {
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: -1000;
-    position: fixed;
-    height: 500px;
-    background-image: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-}
-
-.second_chef {
-  font-family: Pacifico;
-  float: left;
-  color: grey;
-  font-size: 40px;
-  padding-bottom: 20px;
-}
+html {
+  position: relative;
+  min-height: 100%;
 
 
-.navbar {
- width: 100%;
- z-index: 100;
- position: fixed;
- // position: absolute;
- top: 0;
- list-style-type: none;
- // padding-top: 10px;
- background: white;
- height: 50px;
-}
+  .title_image {
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1000;
+      position: fixed;
+      height: 500px;
+      background-image: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+  }
 
-.navbar li {
-  display: inline;
-  float: right;
-}
-
-.navbar li a {
-  padding: 30px 30px;
-  text-align: right;
-  color: grey;
-  
-}
+  .second_chef {
+    font-family: Pacifico;
+    float: left;
+    color: grey;
+    font-size: 40px;
+    padding-bottom: 20px;
+  }
 
 
-body{
-  font-family: $main_font;
-  color: $main_font_color;
-  padding-top: 500px;
+  .navbar {
+   width: 100%;
+   z-index: 100;
+   position: fixed;
+   // position: absolute;
+   top: 0;
+   list-style-type: none;
+   // padding-top: 10px;
+   background: white;
+   height: 50px;
+  }
 
+  .navbar li {
+    display: inline;
+    float: right;
+  }
 
-
-  text-align: center;
-
-
-  // .title_image img {
+  .navbar li a {
+    padding: 30px 30px;
+    text-align: right;
+    color: grey;
     
-  //   max-height: 300px;
-  //   max-width: 100%;
-
-  // }
-  
-  h1.title_font{
-    font-family: $heading_font;
-    font-size: 7em; 
-    text-align: center;
-    color: $button_color;
-    position: absolute;
-    width: 100%
-
   }
 
-  .main_part{
-    width: 100%;
-    position: relative;
-    left: 0;
-    margin-top: 400px;
-    background-color: #fff;
-    z-index: 100;
 
-    .list_meals{
-      border-bottom: 0.5px $turquoise_greys;
-      list-style-type: none;
-    }
+  body{
+    font-family: $main_font;
+    color: $main_font_color;
+    padding-top: 500px;
+    margin: 0 0 100px;
+    font-size: 20px;
+
+    text-align: center;
 
 
-    .btn{
-      @include span-columns(12);
-      margin: 5px 0;
-      padding: 15px 30px;
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      outline: none;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      transition: all 0.3s;
-      border: none;
-      background-color: $button_color;
-      color: #fff;
-      &:hover{
-        color: #fff;
-        background: $turquoise_greys; 
-      }
-    }
+    // .title_image img {
+      
+    //   max-height: 300px;
+    //   max-width: 100%;
 
-
-    select {
-      @include span-columns(12);
-      margin: 5px 0;
+    // }
+    
+    h1.title_font{
+      font-family: $heading_font;
+      font-size: 7em; 
       text-align: center;
-      padding: 15px 30px;
-      color: #fff;
-      border: transparent;
-      border-radius: 0;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
+      color: $button_color;
+      position: absolute;
+      width: 100%
+
+    }
+
+    .main_part{
+      width: 100%;
       position: relative;
-      background: image-url("arrow_down.png") 92% 50% no-repeat  $button_color;
+      left: 0;
+      margin-top: 400px;
+      background-color: #fff;
+      z-index: 100;
+
+      .list_meals{
+        border-bottom: 0.5px $turquoise_greys;
+        list-style-type: none;
+      }
+
+
+      .btn{
+        @include span-columns(12);
+        margin: 5px 0;
+        padding: 15px 30px;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        outline: none;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+        border: none;
+        background-color: $button_color;
+        color: #fff;
+        &:hover{
+          color: #fff;
+          background: $turquoise_greys; 
+        }
+      }
+
+
+      select {
+        @include span-columns(12);
+        margin: 5px 0;
+        text-align: center;
+        padding: 15px 30px;
+        color: #fff;
+        border: transparent;
+        border-radius: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        position: relative;
+        background: image-url("arrow_down.png") 92% 50% no-repeat  $button_color;
+      }
+
+      input[type="text"]{
+        @include span-columns(12);
+        margin: 5px 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 15px 30px;
+        border: transparent;
+        border-radius: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+
+
+
+      a:link {
+        text-decoration: none;
+        color: $main_font_color;
+      }
+
+      a:visited {
+        text-decoration: none;
+        color: $main_font_color;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        color: $main_font_color;
+      }
+
+      a:active {
+        text-decoration: underline;
+        color: $main_font_color;
+      }
+
     }
 
-    input[type="text"]{
-      @include span-columns(12);
-      margin: 5px 0;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      padding: 15px 30px;
-      border: transparent;
-      border-radius: 0;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+    
 
-
-
-
-    a:link {
-      text-decoration: none;
-      color: $main_font_color;
-    }
-
-    a:visited {
-      text-decoration: none;
-      color: $main_font_color;
-    }
-
-    a:hover {
-      text-decoration: underline;
-      color: $main_font_color;
-    }
-
-    a:active {
-      text-decoration: underline;
-      color: $main_font_color;
-    }
-
-  }
-
-  
-
-  footer{
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    margin-top: 100px;
-    background-color: $main_font_color;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    a:link{
+    footer{
+      width: 100%;
+      position: absolute;
+      height: 80px;
+      bottom: 0;
+      left: 0;
+      background-color: $main_font_color;
       color: #fff;
-    } 
+      padding: 20px;
+      text-align: center;
+      a {
+        color: #fff;
+        text-decoration: none;
+      } 
+    }
+
+
+
+
   }
 
 }
