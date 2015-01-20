@@ -1,10 +1,11 @@
 %h1
   = "#{@user.chef_name}"
-
-  = link_to "edit", edit_user_path(@user) if can? :update, @user
   %br
-  = link_to "Add Meal", new_meal_path if can? :create, Meal
-  = link_to "View Orders", new_meal_path if can? :create, Meal
+  = link_to "edit", edit_user_path(@user), class: "btn" if can? :update, @user
+  %br
+  = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
+  %br
+  = link_to "View Orders", new_meal_path, class: "btn" if can? :create, Meal
  
 
 %p 

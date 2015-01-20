@@ -5,7 +5,7 @@ body{
 
 
   .list_meals{
-    border-bottom: 0.5px #305c69;
+    border-bottom: 0.5px $turquoise_greys;
   }
 
   .btn{
@@ -18,7 +18,7 @@ body{
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     border: 3px solid #fff;
-    background-color: #376978; // grey
+    background-color: $button_dark_turquoise;
     color: #fff;
     &:after {
       content: '';
@@ -30,7 +30,7 @@ body{
       }
     &:hover{
       color: #fff;
-      background: #305c69; // grey
+      background: $turquoise_greys; 
       }
   }
 
@@ -54,27 +54,27 @@ body{
 
   a:link {
       text-decoration: none;
-      color: #282828;
+      color: $main_font_color;
   }
 
   a:visited {
       text-decoration: none;
-      color: #282828;
+      color: $main_font_color;
   }
 
   a:hover {
       text-decoration: underline;
-      color: #282828;
+      color: $main_font_color;
   }
 
   a:active {
       text-decoration: underline;
-      color: #282828;
+      color: $main_font_color;
   }
 
   footer{
     margin-top: 100px;
-    background-color: #282828;
+    background-color: $main_font_color;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -82,7 +82,6 @@ body{
       color: #fff;
     } 
   }
-
 
 
 }
