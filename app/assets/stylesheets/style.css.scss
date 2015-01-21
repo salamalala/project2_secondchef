@@ -66,16 +66,15 @@ html {
       }
 
 
-
       nav {
         top: 0;
         width: 100%;
         z-index: 3;
         text-align: right;
         background: white;
-        height: 50px;
+        height: 60px;
         line-height: 50px;
-        border-bottom: 1px solid #000;
+        // border-bottom: 1px solid #000;
         position: fixed;
         &:first-child{
           border-bottom: none;
@@ -83,7 +82,7 @@ html {
         }
         a.logo {
           font-family: $heading_font;
-          font-size: 1.2em; 
+          font-size: 2em; 
           float: left;
           color: #EE7600;
           padding: 0 0 0 10px;
@@ -130,6 +129,8 @@ html {
       }
 
 
+
+
     main {
       width: 100%;
       //height: 100%;
@@ -141,6 +142,10 @@ html {
       .form_frontpage{
         background: rgba(255,255,255,0);
         margin-bottom: 100px;
+      }
+
+      li {
+        list-style-type: none;
       }
 
       input.btn{
@@ -168,13 +173,15 @@ html {
       }
 
       .btn{
-        @include span-columns(12);
+        // @include span-columns(12);
         margin-top: 20px;
         margin-bottom: 40px;
         padding: 15px 30px;
+        border-radius: 5px;
         display: inline-block;
         text-transform: uppercase;
         letter-spacing: 1px;
+        font-size: 15px;
         outline: none;
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
@@ -190,6 +197,15 @@ html {
           text-decoration: none;
         }
       }
+
+     .chef_edit_button {
+      font-size: 10px;
+      padding: 7px 7px;
+      background-color: gray;
+      border-radius: 5px;
+      width: 100px;
+      text-align: center;
+     }
 
       select {
         @include span-columns(12);
@@ -264,12 +280,26 @@ html {
       -webkit-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       -moz-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
+      border: 3px solid orange;
     }
+
+
 
     .chef_shortinfo img {
       float: right;
       margin: right;
+      padding: 10px;
+      // width: 150px;
+      // height: auto;
     }
+
+    
+
+    .chef_profile_labels {
+      color: gray;
+      font-size: 15px;
+    }
+
 
     .list_meals, #order_list{
       border-bottom: 0.5px $turquoise_greys;
