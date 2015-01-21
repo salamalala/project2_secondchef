@@ -19,5 +19,3 @@ Map
     = link_to "Cooking tonight? Add a meal!", new_meal_path, class: "btn" if can? :create, Meal
   - else
     = link_to "Want to cook? Become a chef!", edit_user_path(current_user), class: "btn"
-
-#useragent{"data-ua" => "desktop"}
