@@ -130,6 +130,8 @@ html {
       text-shadow: 1px 1px rgba(139,69,19,0.5);
     }
 
+
+
     main {
       width: 100%;
       //height: 100%;
@@ -141,6 +143,10 @@ html {
       .form_frontpage{
         background: rgba(255,255,255,0);
         margin-bottom: 100px;
+      }
+
+      li {
+        list-style-type: none;
       }
 
       input.btn{
@@ -200,6 +206,7 @@ html {
       width: 100px;
       text-align: center;
      }
+
       select {
         @include span-columns(12);
         margin: 5px 0 20px 0;
@@ -273,15 +280,26 @@ html {
       -webkit-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       -moz-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
+      border: 3px solid orange;
     }
+
+
 
     .chef_shortinfo img {
       float: right;
       margin: right;
+      padding: 10px;
       // width: 150px;
       // height: auto;
-      
     }
+
+    
+
+    .chef_profile_labels {
+      color: gray;
+      font-size: 15px;
+    }
+
 
     .list_meals, #order_list{
       border-bottom: 0.5px $turquoise_greys;

@@ -10,23 +10,24 @@
   = link_to "View Orders", new_meal_path, class: "btn" if can? :create, Meal
  
 .chef_shortinfo
+
   %p
     = link_to image_tag(@user.image.thumb.url), @user.image.detail.url
 
-  %p 
-    Full name: 
-    %br
+  %p
+    .chef_profile_labels 
+      Full name: 
     = @user.name
 
-  %p 
-    Description:
+  %p
+    .chef_profile_labels 
+      Description:
     = @user.description
 
 
   %p 
-    Address:
-    %br
-
+    .chef_profile_labels 
+      Address:
     = link_to "#" do
       - if !@user.address_line_1.blank?
         = @user.address_line_1
@@ -45,12 +46,16 @@
 
 
   %p
-    Phone:
+    .chef_profile_labels 
+      Phone:
     = @user.phone_number
 
   %p 
-    Avg. rating:
+    .chef_profile_labels 
+      Avg. rating:
     = @user.average_rating.blank? ? "No reviews yet" : @user.average_rating
+
+ 
 
 - if @user.role? :chef
 
