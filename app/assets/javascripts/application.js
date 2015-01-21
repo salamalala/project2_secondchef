@@ -41,23 +41,15 @@ myMap.initialize = function() {
   var mapOptions = {
     center: {lat: 51.52, lng: -0.115},
     zoom: 14,
-    styles: [
-      {
-        "stylers": [
-          { "lightness": 14 },
-          { "gamma": 0.59 },
-          { "saturation": -71 }
-        ]
-      }
-    ]
+    styles: [ { "stylers": [ { "lightness": 14 }, { "gamma": 0.59 }, { "saturation": -71 } ] } ]
   };
-
   myMap.map = new google.maps.Map(myMap.mapElement, mapOptions);
 
   myMap.locatorElement.on('click', function(){
     myMap.getPosition();
     console.log("clicked");
   });
+
 };
 
 myMap.getPosition = function(){
@@ -70,6 +62,7 @@ myMap.getPosition = function(){
 };
 
 myMap.geolocationSuccess = function(position){
+  
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
   // var data = { latitude: latitude, longitude: longitude };
@@ -77,23 +70,15 @@ myMap.geolocationSuccess = function(position){
   myMap.longitudeElement.val(longitude);
   console.log("form updated");
 
-  var markerOptions = {
-    position: {lat: latitude, lng: longitude}
-  };
-
+  var markerOptions = { position: {lat: latitude, lng: longitude} };
   var marker = new google.maps.Marker(markerOptions);
   marker.setMap(myMap.map);
 
-  var popupOptions = {
-    content: "you are here",
-  };
-
+  var popupOptions = { content: "you are here" };
   var popup = new google.maps.InfoWindow(popupOptions);
-
   google.maps.event.addListener(marker, 'click', function(){
     popup.open(myMap.map, marker);
   });
-
   myMap.map.setCenter(marker.getPosition());
 
 };
