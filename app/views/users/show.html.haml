@@ -93,56 +93,61 @@
     %br
     = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
 
-  %h3 Archived Meals
 
-  - if @archived_meals.any?
-    %ul
-    - @archived_meals.each do |meal|
-      %li
+  .archived_meals
 
-        = link_to meal do
-          = meal.name
-          &nbsp;
-          |
-          = number_to_currency(meal.price, unit: "£") 
-          / = time_tag(meal.start_at)
-          |
-          = time_tag(meal.end_at) 
-
-      %br
-
-    / = paginate @archived_meals
-  - else
-    No archived meals yet
-
-  - if @user == current_user
-
-    / %h2 Orders received
-
-    / %h3 Current
+    %h3 Archived Meals
 
 
-    / - if @current_orders_received.any?
-    /   - @current_orders_received.each do |order|
-    /     = link_to order do
-    /       = "Order ##{order.id} - #{order.meal.name}"
-    /       &nbsp;
-    /       = number_to_currency(order.total, unit: "£")
-             
-    /       = time_tag(order.created_at)
-    / - else
-    /   No orders received yet
+  
+    - if @archived_meals.any?
+      %ul
+      - @archived_meals.each do |meal|
+        %li
 
-    / %h3 Archived
+          = link_to meal do
+            = meal.name
+            &nbsp;
+            |
+            = number_to_currency(meal.price, unit: "£") 
+            / = time_tag(meal.start_at)
+            |
+            = time_tag(meal.end_at) 
 
-    / - if @archived_orders_received.any?
-    /   - @archived_orders_received.each do |order|
-    /     = link_to order do       
-    /       = "Order ##{order.id} - #{order.meal.name}"
-    /       &nbsp;
-    /       = number_to_currency(order.total, unit: "£")
-    /       = time_tag(order.created_at)
-    /   / = paginate @archived_orders_received
-    / - else
-    /   No orders received yet
+        %br
+
+      / = paginate @archived_meals
+    - else
+      No archived meals yet
+
+    - if @user == current_user
+
+      / %h2 Orders received
+
+      / %h3 Current
+
+
+      / - if @current_orders_received.any?
+      /   - @current_orders_received.each do |order|
+      /     = link_to order do
+      /       = "Order ##{order.id} - #{order.meal.name}"
+      /       &nbsp;
+      /       = number_to_currency(order.total, unit: "£")
+               
+      /       = time_tag(order.created_at)
+      / - else
+      /   No orders received yet
+
+      / %h3 Archived
+
+      / - if @archived_orders_received.any?
+      /   - @archived_orders_received.each do |order|
+      /     = link_to order do       
+      /       = "Order ##{order.id} - #{order.meal.name}"
+      /       &nbsp;
+      /       = number_to_currency(order.total, unit: "£")
+      /       = time_tag(order.created_at)
+      /   / = paginate @archived_orders_received
+      / - else
+      /   No orders received yet
 
