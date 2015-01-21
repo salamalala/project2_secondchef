@@ -65,7 +65,6 @@ html {
       
       }
 
-      
 
       nav {
         top: 0;
@@ -77,12 +76,17 @@ html {
         line-height: 50px;
         // border-bottom: 1px solid #000;
         position: fixed;
+        &:first-child{
+          border-bottom: none;
+
+        }
         a.logo {
           font-family: $heading_font;
           font-size: 2em; 
           float: left;
           color: #EE7600;
           padding: 0 0 0 10px;
+          text-decoration: none;
         }  
         ul{
           padding-left: 0;
@@ -105,10 +109,13 @@ html {
             text-decoration: none;
               &:hover{
                 font-weight: 700;
+                text-decoration: none;
               }
             }
           }
         } 
+
+  
         .nav-icon{
           display: inline-block;
           padding: 0 10px;
@@ -121,14 +128,6 @@ html {
         }
       }
 
-    h1.title_font, h1.title_font a {
-      font-family: $heading_font;
-      font-size: 5em; 
-      line-height: 2.5em;
-      text-align: center;
-      color: #EE7600;
-      text-shadow: 1px 1px rgba(139,69,19,0.5);
-    }
 
 
 
@@ -138,7 +137,7 @@ html {
       padding: 0 10px;
       background-color: #fff;
       //margin: 5em 0 100px;
-      margin-top: 50px; // Height of the nav
+      margin-top: 100px; // Height of the nav
 
       .form_frontpage{
         background: rgba(255,255,255,0);
@@ -151,6 +150,7 @@ html {
 
       input.btn{
         @include span-columns(12);
+
         margin-top: 20px;
         margin-bottom: 40px;
         padding: 15px 30px;
@@ -304,18 +304,35 @@ html {
     .list_meals, #order_list{
       border-bottom: 0.5px $turquoise_greys;
       list-style-type: none;
+      &:last-child{
+        border-bottom: none;
+      }
       .meal_name{
-        font-size: 1.2em;
+        font-size: 1.4em;
+        display: inline-block;
+        float: left
+      }
+      #arrow_right{
+        float: right;
+        margin-left: 50px;
+        margin-right: 10px;
+        display: inline-block;
       }
       .distance{
         display: inline-block;
         float: right;
       }
+      .price{
+        clear: both;
+        display: block;
+      }
     }
+
 
     .archived_meals, .archived_meals a {
       color: grey;
     }
+
 
     // #phone_meals {
     //   @include media($desktop) {
@@ -334,6 +351,7 @@ html {
   
       
     }
+
     
 
     footer{

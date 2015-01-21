@@ -1,5 +1,3 @@
-%h1 Tonight's meals
-
 = form_tag "/meals", method: "get", id: :search_form, remote: :true do
   = text_field_tag :latitude, @latitude
   = text_field_tag :longitude, @longitude
@@ -10,6 +8,10 @@
   = submit_tag "Update results", id: "finder", class: "btn"
 
 %button{id: "locator"} Get location
+
+
+%h1 Tonight's meals:  
+
 
 -if !@meals.blank?
   #phone_meals
