@@ -13,6 +13,9 @@ gem 'omniauth-facebook'
 gem 'rmagick'
 gem 'omniauth'
 
+gem 'jquery-datetimepicker-rails'
+
+
 
 group :development, :test do
   gem 'pry-rails'

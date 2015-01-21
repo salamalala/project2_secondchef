@@ -1,4 +1,4 @@
-%h1 My orders
+%h1 All my orders:
 
 %ul
   #order_list
@@ -8,5 +8,9 @@
           = "Order ##{order.id} - #{order.meal.name}"
           &nbsp;
           = number_to_currency(order.total, unit: "£")
+          %br
+          %br
+          = "Pick up time: #{order.fetch_at}"
+
 
 = paginate @orders

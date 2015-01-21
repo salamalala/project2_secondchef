@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.datetimepicker
 //= require_tree .
 
 // order total calculation
@@ -112,6 +113,8 @@ $(function(){
     $('nav ul li').slideToggle();
   });
 
+
+
   // ajax search
   $('#search_form').
   on('ajax:success', function(evt, data, status, xhr){
@@ -123,6 +126,8 @@ $(function(){
   $('#search').on('keyup', function(){
     $('#search_form').submit();
   })
+
+ 
   
   myCalc.priceElement = $("#hiddenprice");
   myCalc.quantityElement = $("#order_quantity");
@@ -136,5 +141,18 @@ $(function(){
   myMap.mapElement = $("#desktop_meals")[0];
   myMap.initialize();
 
+
+
+  // add datetimepicker
+  $('.datetimepicker').datetimepicker({
+    format:'d.m.Y H:i',
+    minDate: 0
+
+  });
+
 });
+
+
+
+  
 
