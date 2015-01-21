@@ -44,22 +44,24 @@ html {
 
 
     .title_image {
-      // background: url(http://media.giphy.com/media/WKUSlerPGZ73i/giphy.gif);
-      // background-repeat: no-repeat;
-      // background-size: cover;
-      // height: 300px;
+      background: url(http://media.giphy.com/media/WKUSlerPGZ73i/giphy.gif);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 300px;
+      background-position: 50% 50%;
       // 
 
-      // top: 0;
-      // left: 0;
-      width: 100%;
-      //z-index: -1;
-      //position: fixed;
-      height: 300px;
-      background-image: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
+
+      // // top: 0;
+      // // left: 0;
+      // width: 100%;
+      // //z-index: -1;
+      // //position: fixed;
+      // height: 300px;
+      // background-image: url("https://assets.creativelive.com/sites/default/files/Diane_Cu_Todd_Porter_WEB_1600x900.jpg");
+      // background-size: cover;
+      // background-repeat: no-repeat;
+      // background-position: 50% 50%;
       
       }
 
@@ -141,6 +143,11 @@ html {
       background-color: #fff;
       //margin: 5em 0 100px;
       margin-top: 50px; // Height of the nav
+
+      .form_frontpage{
+        background: rgba(255,255,255,0);
+        margin-bottom: 100px;
+      }
 
       input.btn{
         @include span-columns(12);
