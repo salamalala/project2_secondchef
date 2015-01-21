@@ -73,6 +73,10 @@ html {
         line-height: 50px;
         border-bottom: 1px solid #000;
         position: fixed;
+        &:first-child{
+          border-bottom: none;
+
+        }
         a.logo {
           font-family: $heading_font;
           font-size: 1em; 
