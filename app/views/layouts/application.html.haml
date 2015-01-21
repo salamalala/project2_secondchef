@@ -2,20 +2,21 @@
 %html
   %head
     / %title UberCook
+    %meta{:content => "width=device-width", :name => "viewport"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Pacifico", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Pacifico", :rel => "stylesheet", :type => "text/css"}/
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    .title_image
-
     = render partial: "/layouts/navbar"
     = render partial: "/layouts/alerts"
     
-    .main_part
-      %h1.title_font SecondChef
+    - if params[:controller] == "meals" && params[:action] == "index" 
+      .title_image
+        %h1.title_font SecondChef
     
+    %main
       = yield
     = render partial: "/layouts/footer"

@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 
 // order total calculation
@@ -125,7 +124,7 @@ $(function(){
 $(document).ready(function(){
   $('.nav-icon').on('click', function(e){
     e.preventDefault();
-    $('.navbar ul').slideToggle();
+    $('nav ul li').slideToggle();
   });
 });
 
