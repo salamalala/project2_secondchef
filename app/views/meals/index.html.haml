@@ -1,5 +1,3 @@
-%h1 Tonight's meals
-
 / %button{id: "locator"} Get location
 
 = form_tag "/meals", method: "get", id: :search_form, remote: :true do
@@ -10,6 +8,8 @@
   = collection_select :category, :category_id, Category.all, :id, :name, {prompt: "All categories", selected: params[:category]&&params[:category][:category_id]}
   %br
   = submit_tag "Update results", id: "finder", class: "btn"
+
+%h1 Tonight's meals:  
 
 -if !@meals.blank? 
   %ul

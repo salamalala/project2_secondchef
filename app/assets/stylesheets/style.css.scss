@@ -55,13 +55,7 @@ html {
       background-position: 50% 50%;
       }
 
-      .second_chef {
-        font-family: Pacifico;
-        float: left;
-        color: grey;
-        font-size: 40px;
-        padding-bottom: 20px;
-      }
+
 
       nav {
         top: 0;
@@ -79,10 +73,11 @@ html {
         }
         a.logo {
           font-family: $heading_font;
-          font-size: 1em; 
+          font-size: 1.2em; 
           float: left;
           color: #EE7600;
           padding: 0 0 0 10px;
+          text-decoration: none;
         }  
         ul{
           padding-left: 0;
@@ -105,10 +100,13 @@ html {
             text-decoration: none;
               &:hover{
                 font-weight: 700;
+                text-decoration: none;
               }
             }
           }
         } 
+
+  
         .nav-icon{
           display: inline-block;
           padding: 0 10px;
@@ -121,14 +119,14 @@ html {
         }
       }
 
-    h1.title_font, h1.title_font a {
-      font-family: $heading_font;
-      font-size: 2.5em; 
-      line-height: 5em;
-      text-align: center;
-      color: #EE7600;
-      text-shadow: 1px 1px rgba(0,0,0,0.5);
-    }
+    // h1.title_font, h1.title_font a {
+    //   font-family: $heading_font;
+    //   font-size: 2.5em; 
+    //   line-height: 5em;
+    //   text-align: center;
+    //   color: #EE7600;
+    //   text-shadow: 1px 1px rgba(0,0,0,0.5);
+    // }
 
     main {
       width: 100%;
@@ -136,10 +134,11 @@ html {
       padding: 0 10px;
       background-color: #fff;
       //margin: 5em 0 100px;
-      margin-top: 50px; // Height of the nav
+      margin-top: 100px; // Height of the nav
 
       input.btn{
         @include span-columns(12);
+
         margin-top: 20px;
         margin-bottom: 40px;
         padding: 15px 30px;
@@ -268,14 +267,32 @@ html {
     .list_meals, #order_list{
       border-bottom: 0.5px $turquoise_greys;
       list-style-type: none;
+      &:last-child{
+        border-bottom: none;
+      }
       .meal_name{
-        font-size: 1.2em;
+        font-size: 1.4em;
+        display: inline-block;
+        float: left
+      }
+      #arrow_right{
+        float: right;
+        margin-left: 50px;
+        margin-right: 10px;
+        display: inline-block;
       }
       .distance{
         display: inline-block;
         float: right;
       }
+      .price{
+        clear: both;
+        display: block;
+      }
     }
+
+
+
     
 
     footer{
