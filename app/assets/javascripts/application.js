@@ -106,6 +106,12 @@ myMap.geolocationFail = function(){
 };
 
 $(function(){
+  // add datetimepicker
+  $('.datetimepicker').datetimepicker({
+    format:'d.m.Y H:i',
+    minDate: 0
+
+  });
 
   //hamburger-icon display
   $('.nav-icon').on('click', function(e){
@@ -141,14 +147,6 @@ $(function(){
   myMap.mapElement = $("#desktop_meals")[0];
   myMap.initialize();
 
-
-
-  // add datetimepicker
-  $('.datetimepicker').datetimepicker({
-    format:'d.m.Y H:i',
-    minDate: 0
-
-  });
 
 });
 
