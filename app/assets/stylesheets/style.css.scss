@@ -333,6 +333,11 @@ html {
     }
 
 
+    .archived_meals, .archived_meals a {
+      color: grey;
+    }
+
+
     // #phone_meals {
     //   @include media($desktop) {
     //     display: none;

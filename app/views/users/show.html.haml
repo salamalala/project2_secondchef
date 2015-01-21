@@ -1,5 +1,5 @@
 %br
-%br
+
 %h1
   = "#{@user.chef_name}"
   .chef_edit_button
@@ -94,12 +94,11 @@
     = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
 
 
-  .archived_meals
 
+
+  .archived_meals 
     %h3 Archived Meals
 
-
-  
     - if @archived_meals.any?
       %ul
       - @archived_meals.each do |meal|
@@ -113,6 +112,7 @@
             / = time_tag(meal.start_at)
             |
             = time_tag(meal.end_at) 
+
 
         %br
 
