@@ -113,6 +113,12 @@ $(function(){
 
   });
 
+  $('.datepicker').datetimepicker({
+    timepicker:false,
+    minDate: 0
+
+  });
+
   //hamburger-icon display
   $('.nav-icon').on('click', function(e){
     e.preventDefault();
