@@ -5,12 +5,12 @@ html {
 
   a:link {
     text-decoration: none;
-    color: white;
+    color: $main_font_color;
   }
 
   a:visited {
     text-decoration: none;
-    color: white;
+    color: $main_font_color;
   }
 
   a:hover {
@@ -25,6 +25,7 @@ html {
 
 
   body{
+    
     // @include outer-container;
     font-family: $main_font;
     color: $main_font_color;
@@ -123,7 +124,7 @@ html {
       line-height: 5em;
       text-align: center;
       color: #EE7600;
-      text-shadow: 1px 1px rgba(0,0,0,0.5);
+      text-shadow: 1px 1px rgba(139,69,19,0.5);
     }
 
     main {
@@ -271,6 +272,24 @@ html {
         display: inline-block;
         float: right;
       }
+    }
+
+    // #phone_meals {
+    //   @include media($desktop) {
+    //     display: none;
+    //   }
+      
+    // }
+
+    #desktop_meals {
+      // display: none;
+      // @include media($desktop) {
+      //   display: inline-block;
+      height: 500px;
+
+      background-color: black;
+  
+      
     }
     
 

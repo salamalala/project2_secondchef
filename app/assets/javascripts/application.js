@@ -66,29 +66,49 @@ $(function(){
 var myMap = myMap || {};
 
 myMap.initialize = function() {
-  myMap.locatorElement.on('click', function(){
-    myMap.getPosition();
-    console.log("clicked");
-  });
-};
-
-myMap.getPosition = function(){
-  if (navigator.geolocation) {
-    var geolocation = navigator.geolocation.getCurrentPosition(myMap.geolocationSuccess, myMap.geolocationFail);
-    console.log("geolocated")
-  } else {
-    alert("Geolocation not enabled.");
+  
+  
+  var mapOptions = {
+    center: {lat: 51.52, lng: -0.115},
+    zoom: 14,
+    styles: [
+      {
+        "stylers": [
+          { "lightness": 14 },
+          { "gamma": 0.59 },
+          { "saturation": -71 }
+        ]
+      }
+    ]
+  
   };
+
+  myMap.map = new google.maps.Map(myMap.mapElement, mapOptions);
+
+
+  // myMap.locatorElement.on('click', function(){
+  //   myMap.getPosition();
+  //   console.log("clicked");
+  // });
 };
 
-myMap.geolocationSuccess = function(position){
-  var latitude = position.coords.latitude;
-  var longitude = position.coords.longitude;
-  // var data = { latitude: latitude, longitude: longitude };
-  myMap.latitudeElement.val(latitude);
-  myMap.longitudeElement.val(longitude);
-  console.log("form updated");
-};
+// myMap.getPosition = function(){
+//   if (navigator.geolocation) {
+//     var geolocation = navigator.geolocation.getCurrentPosition(myMap.geolocationSuccess, myMap.geolocationFail);
+//     console.log("geolocated")
+//   } else {
+//     alert("Geolocation not enabled.");
+//   };
+// };
+
+// myMap.geolocationSuccess = function(position){
+//   var latitude = position.coords.latitude;
+//   var longitude = position.coords.longitude;
+//   // var data = { latitude: latitude, longitude: longitude };
+//   myMap.latitudeElement.val(latitude);
+//   myMap.longitudeElement.val(longitude);
+//   console.log("form updated");
+// };
 
 // myMap.submitAjax = function(data){
 //   console.log("sending ajax");
@@ -107,15 +127,17 @@ myMap.geolocationSuccess = function(position){
 //   });
 // };
 
-myMap.geolocationFail = function(){
-  alert("Geolocation failed.")
-};
+// myMap.geolocationFail = function(){
+//   alert("Geolocation failed.")
+// };
 
 $(function(){
   myMap.locatorElement = $("#locator");
   myMap.latitudeElement = $("#latitude");
   myMap.longitudeElement = $("#longitude");
   myMap.finderElement = $("#finder");
+  myMap.mapElement = $("#desktop_meals")[0];
+  console.log(myMap.mapElement);
   myMap.initialize();
 });
 

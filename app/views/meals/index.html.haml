@@ -14,10 +14,12 @@
   %br
   = submit_tag "Update results", id: "finder", class: "btn"
 
--if !@meals.blank? 
-  %ul
-    #meal_list
-      = render @meals
+-if !@meals.blank?
+  #phone_meals
+    %ul
+      #meal_list
+        = render @meals
+  #desktop_meals
 -else
   %p There aren't any meals in that category yet.  
 
