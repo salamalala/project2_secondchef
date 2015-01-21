@@ -1,18 +1,21 @@
+%br
+%br
 %h1
   = "#{@user.chef_name}"
-  %br
-  = link_to "edit", edit_user_path(@user), class: "btn" if can? :update, @user
-  %br
+  .chef_edit_button
+    = link_to "edit profile", edit_user_path(@user) if can? :update, @user
+  
   = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
-  %br
+
   = link_to "View Orders", new_meal_path, class: "btn" if can? :create, Meal
  
 .chef_shortinfo
   %p
-    = image_tag(@user.image.thumb.url)
+    = link_to image_tag(@user.image.thumb.url), @user.image.detail.url
 
   %p 
     Full name: 
+    %br
     = @user.name
 
   %p 
