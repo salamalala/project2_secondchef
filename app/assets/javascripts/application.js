@@ -32,41 +32,11 @@ myCalc.recalculateTotal = function(price) {
   myCalc.totalElement.text("£" + total.toFixed(2));
 };
 
-$(function(){
-  myCalc.priceElement = $("#hiddenprice");
-  myCalc.quantityElement = $("#order_quantity");
-  myCalc.totalElement = $("#totalshow");
-  myCalc.initialize();
-});
-
-
-// ajax meal index
-
-var myMeals = myMeals || {};
-
-$(function(){
-
-  $('#search_form').
-  on('ajax:success', function(evt, data, status, xhr){
-    $('#meal_list').html(data);
-  }).
-  on('ajax:error', function(xhr, status, error){
-    console.log('error! :', error);
-  });
-  
-  $('#search').on('keyup', function(){
-    $('#search_form').submit();
-  })
-  
-
-});
-
 // mapping
 
 var myMap = myMap || {};
 
 myMap.initialize = function() {
-  
   
   var mapOptions = {
     center: {lat: 51.52, lng: -0.115},
@@ -80,16 +50,9 @@ myMap.initialize = function() {
         ]
       }
     ]
-  
   };
 
   myMap.map = new google.maps.Map(myMap.mapElement, mapOptions);
-
-
-  
-
-
-
 
   myMap.locatorElement.on('click', function(){
     myMap.getPosition();
@@ -120,7 +83,6 @@ myMap.geolocationSuccess = function(position){
 
   var marker = new google.maps.Marker(markerOptions);
   marker.setMap(myMap.map);
-
 
   var popupOptions = {
     content: "you are here",
@@ -158,26 +120,36 @@ myMap.geolocationFail = function(){
 };
 
 $(function(){
+
+  //hamburger-icon display
+  $('.nav-icon').on('click', function(e){
+    e.preventDefault();
+    $('nav ul li').slideToggle();
+  });
+
+  // ajax search
+  $('#search_form').
+  on('ajax:success', function(evt, data, status, xhr){
+    $('#meal_list').html(data);
+  }).
+  on('ajax:error', function(xhr, status, error){
+    console.log('error! :', error);
+  });
+  $('#search').on('keyup', function(){
+    $('#search_form').submit();
+  })
+  
+  myCalc.priceElement = $("#hiddenprice");
+  myCalc.quantityElement = $("#order_quantity");
+  myCalc.totalElement = $("#totalshow");
+  myCalc.initialize();
+
   myMap.locatorElement = $("#locator");
   myMap.latitudeElement = $("#latitude");
   myMap.longitudeElement = $("#longitude");
   myMap.finderElement = $("#finder");
   myMap.mapElement = $("#desktop_meals")[0];
-  console.log(myMap.mapElement);
   myMap.initialize();
+
 });
-
-
-//hamburger-icon display
-$(document).ready(function(){
-  $('.nav-icon').on('click', function(e){
-    e.preventDefault();
-    $('nav ul li').slideToggle();
-  });
-});
-
-
-
-
-
 
