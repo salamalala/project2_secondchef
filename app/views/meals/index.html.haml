@@ -1,6 +1,8 @@
 %h1 Tonight's meals
 
-%button{id: "locator"} Get location
+/ %img{:alt => "Cool Animated Graphic", :src => "giphy.gif"}/
+
+
 
 = form_tag "/meals", method: "get", id: :search_form, remote: :true do
   = text_field_tag :latitude, @latitude
@@ -13,7 +15,8 @@
   = collection_select :category, :category_id, Category.all, :id, :name, {prompt: "All categories", selected: params[:category]&&params[:category][:category_id]}
   %br
   = submit_tag "Update results", id: "finder", class: "btn"
-
+%br
+%button{id: "locator"} Get location
 -if !@meals.blank?
   #phone_meals
     %ul

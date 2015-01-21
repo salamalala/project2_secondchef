@@ -86,29 +86,55 @@ myMap.initialize = function() {
   myMap.map = new google.maps.Map(myMap.mapElement, mapOptions);
 
 
-  // myMap.locatorElement.on('click', function(){
-  //   myMap.getPosition();
-  //   console.log("clicked");
-  // });
+  
+
+
+
+
+  myMap.locatorElement.on('click', function(){
+    myMap.getPosition();
+    console.log("clicked");
+  });
 };
 
-// myMap.getPosition = function(){
-//   if (navigator.geolocation) {
-//     var geolocation = navigator.geolocation.getCurrentPosition(myMap.geolocationSuccess, myMap.geolocationFail);
-//     console.log("geolocated")
-//   } else {
-//     alert("Geolocation not enabled.");
-//   };
-// };
+myMap.getPosition = function(){
+  if (navigator.geolocation) {
+    var geolocation = navigator.geolocation.getCurrentPosition(myMap.geolocationSuccess, myMap.geolocationFail);
+    console.log("geolocated")
+  } else {
+    alert("Geolocation not enabled.");
+  };
+};
 
-// myMap.geolocationSuccess = function(position){
-//   var latitude = position.coords.latitude;
-//   var longitude = position.coords.longitude;
-//   // var data = { latitude: latitude, longitude: longitude };
-//   myMap.latitudeElement.val(latitude);
-//   myMap.longitudeElement.val(longitude);
-//   console.log("form updated");
-// };
+myMap.geolocationSuccess = function(position){
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  // var data = { latitude: latitude, longitude: longitude };
+  myMap.latitudeElement.val(latitude);
+  myMap.longitudeElement.val(longitude);
+  console.log("form updated");
+
+  var markerOptions = {
+    position: {lat: latitude, lng: longitude}
+  };
+
+  var marker = new google.maps.Marker(markerOptions);
+  marker.setMap(myMap.map);
+
+
+  var popupOptions = {
+    content: "you are here",
+  };
+
+  var popup = new google.maps.InfoWindow(popupOptions);
+
+  google.maps.event.addListener(marker, 'click', function(){
+    popup.open(myMap.map, marker);
+  });
+
+  myMap.map.setCenter(marker.getPosition());
+
+};
 
 // myMap.submitAjax = function(data){
 //   console.log("sending ajax");
@@ -127,9 +153,9 @@ myMap.initialize = function() {
 //   });
 // };
 
-// myMap.geolocationFail = function(){
-//   alert("Geolocation failed.")
-// };
+myMap.geolocationFail = function(){
+  alert("Geolocation failed.")
+};
 
 $(function(){
   myMap.locatorElement = $("#locator");

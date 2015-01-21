@@ -44,6 +44,12 @@ html {
 
 
     .title_image {
+      // background: url(http://media.giphy.com/media/WKUSlerPGZ73i/giphy.gif);
+      // background-repeat: no-repeat;
+      // background-size: cover;
+      // height: 300px;
+      // 
+
       // top: 0;
       // left: 0;
       width: 100%;
@@ -54,6 +60,7 @@ html {
       background-size: cover;
       background-repeat: no-repeat;
       background-position: 50% 50%;
+      
       }
 
       .second_chef {
@@ -120,8 +127,8 @@ html {
 
     h1.title_font, h1.title_font a {
       font-family: $heading_font;
-      font-size: 2.5em; 
-      line-height: 5em;
+      font-size: 5em; 
+      line-height: 2.5em;
       text-align: center;
       color: #EE7600;
       text-shadow: 1px 1px rgba(139,69,19,0.5);
