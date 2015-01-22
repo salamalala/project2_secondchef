@@ -6,16 +6,18 @@
     %p Signed in as #{current_user.first_name}
     %ul
       %li= link_to "All offered meals tonight", root_path if can? :read, Meal
-      %li= link_to "My orders", orders_path if can? :read, Order
+      %li= link_to "My Orders", orders_path if can? :read, Order
       - if current_user.role?(:chef)
-        %li= link_to "My chef profile", user_path(current_user)
+        %li= link_to "My Chef Profile", user_path(current_user)
+        %li= link_to "Add a Meal", new_meal_path
       - else current_user
-        %li= link_to "Become a chef!", edit_user_path(current_user)
-      %li= link_to "My account", edit_user_registration_path
-      %li= link_to "Log out", destroy_user_session_path, method: :delete
+        %li= link_to "Become a Chef!", edit_user_path(current_user)
+      %li= link_to "My Account", edit_user_registration_path
+      %li= link_to "Log Out", destroy_user_session_path, method: :delete
   - else
     %ul
-      %li= link_to "Log in", new_user_session_path
+      %li= link_to "Log In", new_user_session_path
       %li= link_to "Register", new_user_registration_path
       %li= link_to "Log in with Facebook", user_omniauth_authorize_path(:facebook)
+
   

@@ -55,7 +55,7 @@
       Avg. rating:
     = @user.average_rating.blank? ? "No reviews yet" : @user.average_rating
 
- 
+%br
 
 - if @user.role? :chef
 
@@ -71,6 +71,8 @@
       / = paginate @reviews
   - else
     No reviews yet
+
+  %br
 
 
   %h3 Current Meals on Offer
@@ -93,6 +95,10 @@
     %br
     = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
 
+  %br
+
+
+
 
   .archived_meals 
     %h3 Archived Meals
@@ -110,6 +116,7 @@
             / = time_tag(meal.start_at)
             |
             = time_tag(meal.end_at) 
+
 
         %br
 

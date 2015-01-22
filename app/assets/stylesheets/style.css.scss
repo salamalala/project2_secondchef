@@ -48,10 +48,10 @@ html {
 
 
     .title_image {
-      background: url(http://media.giphy.com/media/WKUSlerPGZ73i/giphy.gif);
+      background: url(http://media.giphy.com/media/5mNhd8i7y7ygg/giphy.gif);
       background-repeat: no-repeat;
       background-size: cover;
-      height: 400px;
+      height: 600px;
       min-width: 100%;
       background-position: 50% 50%;
       // 
@@ -284,6 +284,10 @@ html {
       }
     }
 
+
+    .archived_meals, .archived_meals a{
+      color: grey;
+    }
     // #order_list a 
 
     .chef_shortinfo {
@@ -308,7 +312,7 @@ html {
 
     
 
-    .chef_profile_labels {
+    .chef_profile_labels, .meal_show_labels {
       color: gray;
       font-size: 15px;
     }
@@ -347,12 +351,12 @@ html {
     }
 
 
-    // #phone_meals {
-    //   @include media($desktop) {
-    //     display: none;
-    //   }
+    #phone_meals {
+      @include media($desktop) {
+        display: none;
+      }
       
-    // }
+    }
 
     #desktop_meals {
       // display: none;
