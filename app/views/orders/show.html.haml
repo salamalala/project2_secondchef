@@ -35,7 +35,7 @@
   - if !@order.review.nil?
     = ("★" * @order.review.rating) + ("☆" * (5 - @order.review.rating))
     %br
-    = link_to "edit", edit_review_path(@order.review) if can? :update, @order.review
-    = link_to "remove", @order.review, :method => :delete, :data => { :confirm => 'Are you sure?' } if can? :destroy, @order.review
+    = link_to "edit", edit_review_path(@order.review), class: "btn" if can? :update, @order.review
+    = link_to "remove", @order.review, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn" if can? :destroy, @order.review
   - else
-    = link_to "Rate", new_review_path(order_id: @order) if can? :create, Review
+    = link_to "Rate", new_review_path(order_id: @order), class: "btn" if can? :create, Review
