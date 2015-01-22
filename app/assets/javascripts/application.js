@@ -184,7 +184,7 @@ deskSpace.renderMeals = function(response){
     deskSpace.popup = new google.maps.InfoWindow();
     google.maps.event.addListener(marker, 'click', function(){
       deskSpace.popup.close();
-      deskSpace.popup.setContent("<a href='" + meal.url + "'>" + meal.name + "<br/>" + meal.price_text + "<br/>" + meal.distance_text + "</a>");
+      deskSpace.popup.setContent("<div id='popupcontent'><a href='" + meal.url + "'><strong>" + meal.name + "</strong><br/>" + meal.price_text + "<br/>" + meal.distance_text + "</a></div>");
       deskSpace.popup.open(deskSpace.map, marker);
     });
   });

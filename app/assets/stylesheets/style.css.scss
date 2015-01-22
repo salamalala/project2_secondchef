@@ -53,7 +53,7 @@ html {
       background-size: cover;
       height: 600px;
       min-width: 100%;
-      background-position: 50% 50%;
+      // background-position: 0% 0%;
       // 
 
 
@@ -300,11 +300,23 @@ html {
       border: 3px solid orange;
     }
 
+    #popupcontent {
+      border: 2px solid orange;
+      padding: 10px;
+    }
+
+    #popupcontent a{
+      color: gray;
+      padding: 2px;
+      text-size: 12px;
+    }
+
 
 
     .chef_shortinfo img {
       float: right;
       margin: right;
+      border-radius: 100%;
       padding: 10px;
       // width: 150px;
       // height: auto;
