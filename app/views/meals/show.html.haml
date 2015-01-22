@@ -66,7 +66,6 @@
         = @meal.user.country
 
 
-  
 - if current_user
   - if current_user != @meal.user 
     = link_to "Order", new_meal_order_path(@meal), class: "btn" if can? :create, Order

@@ -6,19 +6,25 @@ class MealsController < ApplicationController
   respond_to :html, :json
 
   DEFAULT_LATITUDE = 51.4980188
-  DEFAULT_LONGITUDE = -0.1860654
+  DEFAULT_LONGITUDE = -2.1860654
 
   def index
+
+    # cache user latitude and longitude
     if current_user && !params[:latitude].blank? && !params[:longitude].blank?
       current_user.current_latitude = params[:latitude].to_f
       current_user.current_longitude = params[:longitude].to_f
       current_user.save
     end
+
+    # set search variables
     latitude = params[:latitude] || (current_user && current_user.current_latitude) || DEFAULT_LATITUDE
     longitude = params[:longitude] || (current_user && current_user.current_longitude) || DEFAULT_LONGITUDE
     @latitude = latitude.to_f
     @longitude = longitude.to_f
     @distance = 400
+
+    # run search
     if !params[:category].blank? && !params[:category][:category_id].blank? && params[:search]
       @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.where("name like ? AND category_id = ?", "%#{params[:search]}%", params[:category][:category_id].to_i)
     elsif !params[:category].blank? && !params[:category][:category_id].blank?
@@ -29,11 +35,21 @@ class MealsController < ApplicationController
       @meals = Meal.near([@latitude, @longitude], @distance).available.tonight #.page(params[:page])
     end
 
-    if request.xhr?
-      render @meals, layout: false 
+    if request.env["HTTP_USER_AGENT"] =~ /Mobile|webOS/
+      if request.xhr?
+        render @meals, layout: false # meals partial (inserted into list)
+      else
+        render :index # view for mobile (list)
+      end
     else
-      respond_with(@meals)
+      # desktop
+      if request.xhr?
+        respond_with(@meals) # meals via serializer (rendered on map)
+      else
+        render :indexdesktop # view for desktop (map)
+      end
     end
+
   end
 
   def show
