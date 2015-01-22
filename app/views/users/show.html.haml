@@ -6,10 +6,11 @@
     .chef_edit_button
       = link_to "edit profile", edit_user_path(@user) if can? :update, @user
     
-    = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
-
-    = link_to "View Orders", new_meal_path, class: "btn" if can? :create, Meal
- 
+    .chef_profile_add
+      = link_to "Add Meal", new_meal_path if can? :create, Meal
+    .chef_profile_view_orders
+      = link_to "View Orders", new_meal_path if can? :create, Meal
+   
 
 
   %p

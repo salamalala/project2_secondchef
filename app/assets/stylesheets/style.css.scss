@@ -253,6 +253,32 @@ html {
         }
       }
 
+      .chef_profile_add, .chef_profile_view_orders {
+        width: 200px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        padding: 15px 30px;
+        border-radius: 5px;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 15px;
+        outline: none;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+        border: none;
+        background-color: $button_color;
+        color: #fff;
+        text-align: center;
+        float: none;
+        &:hover{
+          color: #fff;
+          background: #D18500; 
+          text-decoration: none;
+        }
+      }
+
      
 
       select {
