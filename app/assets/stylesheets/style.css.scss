@@ -295,7 +295,7 @@ html {
 
     
 
-    .chef_profile_labels {
+    .chef_profile_labels, .meal_show_labels {
       color: gray;
       font-size: 15px;
     }
@@ -334,12 +334,12 @@ html {
     }
 
 
-    // #phone_meals {
-    //   @include media($desktop) {
-    //     display: none;
-    //   }
+    #phone_meals {
+      @include media($desktop) {
+        display: none;
+      }
       
-    // }
+    }
 
     #desktop_meals {
       // display: none;

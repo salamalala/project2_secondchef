@@ -1,31 +1,32 @@
 %h1
   = @meal.name
- 
-= link_to "order", new_meal_order_path(@meal), class: "btn"
-
-%br
+  = link_to "order", new_meal_order_path(@meal), class: "btn"
 
 %p 
-  Description:
+  .meal_show_labels
+    Description:
   = @meal.description
 
 %p 
-  Category:
+  .meal_show_labels
+    Category:
   =@meal.category.name
 
 
 %p 
-  Quantity:
+  .meal_show_labels
+    Quantity:
   = "#{@meal.quantity} portions available"
 
 
 %p 
-  Price: 
+  .meal_show_labels
+    Price: 
   = "#{number_to_currency(@meal.price, unit: "£")} /portion"
 
 %p 
-  Availability:
-  %br
+  .meal_show_labels
+    Availability:
   = time_tag(@meal.start_at)
   %br
   = time_tag(@meal.end_at)
@@ -65,7 +66,7 @@
         = @meal.user.country
 
 
-
+%br
 - if current_user
   = link_to "Order", new_meal_order_path(@meal), class: "btn" if can? :create, Order
 - else
@@ -78,3 +79,4 @@
   = link_to "edit", edit_meal_path(@meal), class: "btn" if can? :update, @meal
   %br
   = link_to "remove", @meal, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn" if can? :destroy, @meal
+%br
