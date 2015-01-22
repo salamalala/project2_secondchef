@@ -7,6 +7,7 @@ html {
 
 
   body{
+
     @include outer-container;
 
     .clearfix {
@@ -22,6 +23,9 @@ html {
     letter-spacing: 1.5px;    
     text-align: left;
     background: white;
+    background-color: #fffdfc;
+    background-image: url(http://www.transparenttextures.com/patterns/absurdity.png);
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
     @include media($tablet) {
     font-size: 20px;
       }
@@ -169,6 +173,9 @@ html {
 
 
     main {
+      background-color: #fffdfc;
+      background-image: url(http://www.transparenttextures.com/patterns/absurdity.png);
+
       @include media($tablet) {
         @include span-columns(8);
         @include shift(2);
@@ -385,10 +392,15 @@ html {
       box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       border: 3px solid orange;
       @include media($tablet) {
-        margin-top: 100px;
+        margin-top: 50px;
         padding: 0 40px 40px 40px;
         margin-bottom: 30px;
         }
+      img{
+        float: right;
+        padding: 20px;
+        border-radius: 100%;
+      }
       
       a:hover{
         text-decoration: none;
@@ -426,19 +438,6 @@ html {
       padding: 2px;
       text-size: 12px;
     }
-
-
-
-    .chef_shortinfo img {
-      // float: right;
-      // margin-right: 200px;
-      border-radius: 100%;
-      // padding: 10px;
-      // width: 150px;
-      // height: auto;
-    }
-
-    
 
     .chef_profile_labels, .meal_show_labels {
       color: gray;

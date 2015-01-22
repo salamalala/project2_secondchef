@@ -42,10 +42,9 @@
 %br
 
 .chef_shortinfo
-  = link_to @meal.user do
 
-    %p
-      = image_tag(@meal.user.image.thumb.url)
+  = image_tag(@meal.user.image.thumb.url)
+  = link_to @meal.user do
 
     %p
       = @meal.user.chef_name
@@ -72,6 +71,8 @@
         %br
       - if !@meal.user.country.blank?
         = @meal.user.country
+
+  = link_to "More", @meal.user, class: "btn"
 
 
 - if current_user
