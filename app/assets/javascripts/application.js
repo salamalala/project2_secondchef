@@ -142,8 +142,6 @@ deskSpace.centerMap = function(position){
   // get user position, create dummy marker and center map to dummy marker
   deskSpace.latitude = position.coords.latitude;
   deskSpace.longitude = position.coords.longitude;
-  console.log("centerMap", deskSpace.latitude);
-  console.log("centerMap", deskSpace.longitude)
 
   var markerCenter = new google.maps.Marker({ position: {lat: deskSpace.latitude, lng: deskSpace.longitude} });
   deskSpace.map.setCenter(markerCenter.getPosition());
@@ -153,15 +151,10 @@ deskSpace.centerMap = function(position){
 
 deskSpace.findMeals = function(){
   
-  console.log("findMeals", deskSpace.latitude);
-  console.log("findMeals", deskSpace.longitude);
-
   // // get form inputs and create data hash
   var name = deskSpace.nameElement.val();
   var category = deskSpace.categoryElement.val();
   var data = { latitude: deskSpace.latitude, longitude: deskSpace.longitude, search: name, category: { category_id: category } };
-
-  console.log("findMeals", data);
 
   // send data hash to meals controller
   $.ajax({
