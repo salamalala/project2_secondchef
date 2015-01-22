@@ -1,15 +1,16 @@
 %br
 
-%h1
-  = "#{@user.chef_name}"
-  .chef_edit_button
-    = link_to "edit profile", edit_user_path(@user) if can? :update, @user
-  
-  = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
-
-  = link_to "View Orders", orders_path, class: "btn" if can? :create, Meal
- 
 .chef_shortinfo
+  %h1
+    = "#{@user.chef_name}"
+    .chef_edit_button
+      = link_to "edit profile", edit_user_path(@user) if can? :update, @user
+    
+    = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
+
+    = link_to "View Orders", new_meal_path, class: "btn" if can? :create, Meal
+ 
+
 
   %p
     = link_to image_tag(@user.image.thumb.url), @user.image.detail.url
@@ -76,7 +77,7 @@
   %br
 
 
-  %h3 Current Meals on Offer
+  %h3 Current Meals on Offer:
 
 
   - if @current_meals.any?
@@ -91,18 +92,19 @@
             = time_tag(meal.start_at)
             |
             = time_tag(meal.end_at)
+        %br
   - else
     No current meals 
     %br
     = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
 
-  %br
+
 
 
 
 
   .archived_meals 
-    %h3 Archived Meals
+    %h3 Archived Meals:
 
     - if @archived_meals.any?
       %ul

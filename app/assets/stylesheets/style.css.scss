@@ -227,7 +227,7 @@ html {
       .btn{
         @include span-columns(12);
         @include media($tablet) {
-          @include span-columns(4); 
+          width: 400px;
           }
         margin-top: 20px;
         margin-bottom: 40px;
@@ -253,22 +253,7 @@ html {
         }
       }
 
-     .chef_edit_button {
-        padding: 15px 30px;   
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        outline: none;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        transition: all 0.3s;
-        border: none;
-        background-color: #5C584F; //darkgrey
-        color: #fff;
-        text-align: center;
-        a:visited{
-          color: #fff;    
-        }
-     }
+     
 
       select {
         @include span-columns(12);
@@ -288,18 +273,21 @@ html {
       }
 
       #meal_category_id{
-        @include span-columns(5);
+        @include span-columns(12);
 
       }
 
       #meal_name{
-        @include span-columns(5);
-        @include shift(1);
+        @include span-columns(12);
       }
 
       #latitude, #longitude {
         display: none;
       }
+
+  
+
+
       input{
         @include span-columns(12);
         border: solid 2px #5C584F; //darkgrey
@@ -354,12 +342,37 @@ html {
 
     .chef_shortinfo {
       text-decoration: none;
-      padding: 20px;
+      padding: 0 40px 40px 40px;
       background-color: #EDF3F1;
       -webkit-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       -moz-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       border: 3px solid orange;
+      margin-top: 100px;
+      a:hover{
+        text-decoration: none;
+        border-bottom: solid 2px black;
+      }
+      .chef_edit_button {
+        margin-top: 10px;
+        border-radius: 5px;
+        width: 100px;
+        font-size: 0.2em;
+        line-height: 30px; 
+         text-transform: uppercase;
+         letter-spacing: 1px;
+         outline: none;
+         -webkit-transition: all 0.3s;
+         -moz-transition: all 0.3s;
+         transition: all 0.3s;
+         border: none;
+         background-color: #5C584F; //darkgrey
+         color: #fff;
+         text-align: center;
+         a:visited{
+           color: #fff;    
+         }
+      }
     }
 
     #popupcontent {
