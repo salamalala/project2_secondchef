@@ -51,10 +51,10 @@ html {
 
 
     .title_image {
-      background: url(http://media.giphy.com/media/5mNhd8i7y7ygg/giphy.gif);
+      background: url(http://media.giphy.com/media/WKUSlerPGZ73i/giphy.gif);
       background-repeat: no-repeat;
       background-size: cover;
-      height: 600px;
+      height: 480px;
       min-width: 100%;
       // background-position: 0% 0%;
       // 
@@ -83,6 +83,7 @@ html {
         line-height: 50px;
         border-bottom: 1px solid #f4f4f4;
         position: fixed;
+        margin-bottom: 200px;
         @include media($tablet) {
           line-height: 75px;
           }
@@ -160,19 +161,37 @@ html {
 
     main {
       @include media($tablet) {
-        @include span-columns(10);
-        @include shift(1);
+        @include span-columns(8);
+        @include shift(2);
         }
       // width: 100%;
       //height: 100%;
       padding: 0 10px;
       background-color: #fff;
       //margin: 5em 0 100px;
-      margin-top: 130px; // Height of the nav
-
-      .form_frontpage{
-        background: rgba(255,255,255,0);
-        margin-bottom: 100px;
+      margin-top: 50px; // Height of the nav
+      h1{
+        margin-top: 100px;
+        font-size: 1.8em;
+        @include span-columns(12);
+      }
+      .search_box{
+        z-index: 4;
+        margin-top: -510px;
+        @include media($tablet) {
+          @include span-columns(6);
+          @include shift(3);
+          }
+        h1{
+          color: white;
+          text-transform: uppercase;  
+          text-align: center;
+          font-weight: 900;
+          letter-spacing: 5px;
+          }
+        }
+      #map{
+        color: white;
       }
 
       li {
@@ -182,7 +201,7 @@ html {
       input.btn{
         @include span-columns(12);
         @include media($tablet) {
-          @include span-columns(4);
+          // @include span-columns(4);
           }
         margin-top: 20px;
         margin-bottom: 40px;
@@ -257,7 +276,7 @@ html {
         text-align: center;
         padding: 0 15px;
         line-height: 40px;
-        border: solid 2px $main_font_color;
+        border: solid 2px #5C584F; //darkgrey
         border-radius: 0;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -268,12 +287,22 @@ html {
         background: image-url("arrow_down.gif") 92% 50% no-repeat #fff;
       }
 
+      #meal_category_id{
+        @include span-columns(5);
+
+      }
+
+      #meal_name{
+        @include span-columns(5);
+        @include shift(1);
+      }
+
       #latitude, #longitude {
         display: none;
       }
       input{
         @include span-columns(12);
-        border: solid 2px $main_font_color;
+        border: solid 2px #5C584F; //darkgrey
         margin: 5px 0 20px 0;
         -webkit-appearance: none;
         -moz-appearance: none;

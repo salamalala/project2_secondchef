@@ -120,7 +120,18 @@ deskSpace.initialize = function() {
   deskSpace.loadingElement = $('#loadingDiv');
 
   // set default center point and load map
-  var mapOptions = { center: { lat: deskSpace.latitude, lng: deskSpace.longitude }, zoom: 7  };
+  var mapOptions = { 
+    center: { lat: deskSpace.latitude, lng: deskSpace.longitude }, 
+    zoom: 7, 
+    styles:[
+      {
+        "stylers": [
+          { "lightness": 14 },
+          { "gamma": 0.59 },
+          { "saturation": -71 }
+        ]
+      }
+    ]      };
   deskSpace.map = new google.maps.Map(deskSpace.mapElement, mapOptions);
 
   // set up empty array of markers
