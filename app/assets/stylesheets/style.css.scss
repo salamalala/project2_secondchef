@@ -77,8 +77,7 @@ html {
         z-index: 3;
         text-align: right;
         background: white;
-        height: 60px;
-        line-height: 50px;
+        line-height: 75px;
         border-bottom: 1px solid #f4f4f4;
         position: fixed;
         &:first-child{
@@ -90,9 +89,14 @@ html {
           font-size: 2em; 
           float: left;
           color: #EE7600;
-          padding: 10px 0 0 10px;
           text-decoration: none;
         }  
+        p{
+          display:inline-block;
+          margin: 0;  
+          line-height: 65px;
+          font-size: 0.7em
+        }
         ul{
           padding-left: 0;
           height: 50px;
@@ -126,6 +130,8 @@ html {
           display: inline-block;
           padding: 0 10px;
           text-decoration: none;
+          float: right;
+          margin-left: 20px;
           &:before{
             background: image-url("hamburger_icon.gif") no-repeat;
             color: #fff45a;
