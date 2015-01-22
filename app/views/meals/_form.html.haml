@@ -7,11 +7,11 @@
         - @meal.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.association :category
-  = f.input :name, label: "Name of the dish"
-  = f.input :description
-  = f.input :price
-  = f.input :quantity, collection: 0..50, prompt: "Select quantity"
-  = f.input :start_at, as: :string, input_html: {class: "datetimepicker"}
-  = f.input :end_at, :as => :string, input_html: {class: "datetimepicker"}
+  = f.association :category, prompt: "All categories", label: false
+  = f.input :name, placeholder: "Meal name", label: false
+  = f.input :description, placeholder: "Description", label: false
+  = f.input :price , placeholder: "Price per portion", label: false
+  = f.input :quantity, collection: 0..50, prompt: "Select quantity", label: false
+  = f.input :start_at, as: :string, input_html: {class: "datetimepicker"}, placeholder: "Start date",label: false
+  = f.input :end_at, :as => :string, input_html: {class: "datetimepicker"}, placeholder: "End date", label: false
   = f.button :submit
