@@ -120,18 +120,9 @@ deskSpace.initialize = function() {
   deskSpace.loadingElement = $('#loadingDiv');
 
   // set default center point and load map
-  var mapOptions = { 
-    center: { lat: deskSpace.latitude, lng: deskSpace.longitude }, 
-    zoom: 7, 
-    styles:[
-      {
-        "stylers": [
-          { "lightness": 14 },
-          { "gamma": 0.59 },
-          { "saturation": -71 }
-        ]
-      }
-    ]      };
+
+  var mapOptions = { center: { lat: deskSpace.latitude, lng: deskSpace.longitude }, zoom: 12  };
+
   deskSpace.map = new google.maps.Map(deskSpace.mapElement, mapOptions);
 
   // set up empty array of markers
@@ -153,26 +144,32 @@ deskSpace.centerMap = function(position){
   // get user position, create dummy marker and center map to dummy marker
   deskSpace.latitude = position.coords.latitude;
   deskSpace.longitude = position.coords.longitude;
-  console.log("centerMap", deskSpace.latitude);
-  console.log("centerMap", deskSpace.longitude)
 
-  var markerCenter = new google.maps.Marker({ position: {lat: deskSpace.latitude, lng: deskSpace.longitude} });
+  var icon2 = {
+    url: "http://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Blue_sphere.svg/150px-Blue_sphere.svg.png",
+    scaledSize: new google.maps.Size(20, 20),
+    origin: new google.maps.Point(0,0), //origin
+    anchor: new google.maps.Point(20, 20)
+  }
+
+
+
+
+
+  var markerCenter = new google.maps.Marker({ position: {lat: deskSpace.latitude, lng: deskSpace.longitude}, icon: icon2 });
+  markerCenter.setMap(deskSpace.map);
   deskSpace.map.setCenter(markerCenter.getPosition());
+
 
   deskSpace.findMeals();
 };
 
 deskSpace.findMeals = function(){
   
-  console.log("findMeals", deskSpace.latitude);
-  console.log("findMeals", deskSpace.longitude);
-
   // // get form inputs and create data hash
   var name = deskSpace.nameElement.val();
   var category = deskSpace.categoryElement.val();
   var data = { latitude: deskSpace.latitude, longitude: deskSpace.longitude, search: name, category: { category_id: category } };
-
-  console.log("findMeals", data);
 
   // send data hash to meals controller
   $.ajax({
@@ -194,15 +191,22 @@ deskSpace.renderMeals = function(response){
   deskSpace.drawMap(null);
   deskSpace.markers = [];
 
+  var icon = {
+    url: "http://www.juniata.edu/life/i/redesign/dining/diningicon.png",
+    scaledSize: new google.maps.Size(60, 60),
+    origin: new google.maps.Point(0,0), //origin
+    anchor: new google.maps.Point(20, 20)
+  }
+
   // for each meal, add to array of markers and create popup
   meals.forEach(function(meal){
-    var marker = new google.maps.Marker({ position: {lat: meal.latitude, lng: meal.longitude} });
+    var marker = new google.maps.Marker({ position: {lat: meal.latitude, lng: meal.longitude}, icon: icon });
     // add to array of markers
     deskSpace.markers.push(marker);
-    deskSpace.popup = new google.maps.InfoWindow({ content: meal.name });
+    deskSpace.popup = new google.maps.InfoWindow();
     google.maps.event.addListener(marker, 'click', function(){
       deskSpace.popup.close();
-      deskSpace.popup.setContent(meal.name);
+      deskSpace.popup.setContent("<div id='popupcontent'><a href='" + meal.url + "'><strong>" + meal.name + "</strong><br/>" + meal.price_text + "<br/>" + meal.distance_text + "</a></div>");
       deskSpace.popup.open(deskSpace.map, marker);
     });
   });
