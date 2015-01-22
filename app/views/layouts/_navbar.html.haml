@@ -2,9 +2,9 @@
   / %li= link_to "Tonight's meals", meals_path
   = link_to "SecondChef", root_path, class: "logo"
   %a.nav-icon{:href => "#"} &#9776;
-  %ul
-    - if user_signed_in?      
-      %li= "Signed in as #{current_user.first_name}"
+  - if user_signed_in?      
+    %p Signed in as #{current_user.first_name}
+    %ul
       %li= link_to "All offered meals tonight", root_path if can? :read, Meal
       %li= link_to "My Orders", orders_path if can? :read, Order
       - if current_user.role?(:chef)
@@ -18,4 +18,5 @@
       %li= link_to "Log In", new_user_session_path
       %li= link_to "Register", new_user_registration_path
       %li= link_to "Log in with Facebook", user_omniauth_authorize_path(:facebook)
+
   
