@@ -12,7 +12,7 @@ gem 'carrierwave'
 gem 'omniauth-facebook'
 gem 'rmagick'
 gem 'omniauth'
-
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'pry-rails'
