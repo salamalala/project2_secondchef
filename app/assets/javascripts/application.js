@@ -181,10 +181,10 @@ deskSpace.renderMeals = function(response){
     var marker = new google.maps.Marker({ position: {lat: meal.latitude, lng: meal.longitude} });
     // add to array of markers
     deskSpace.markers.push(marker);
-    deskSpace.popup = new google.maps.InfoWindow({ content: meal.name });
+    deskSpace.popup = new google.maps.InfoWindow();
     google.maps.event.addListener(marker, 'click', function(){
       deskSpace.popup.close();
-      deskSpace.popup.setContent(meal.name);
+      deskSpace.popup.setContent("<a href='" + meal.url + "'>" + meal.name + "<br/>" + meal.price_text + "<br/>" + meal.distance_text + "</a>");
       deskSpace.popup.open(deskSpace.map, marker);
     });
   });
