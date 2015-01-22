@@ -143,8 +143,21 @@ deskSpace.centerMap = function(position){
   deskSpace.latitude = position.coords.latitude;
   deskSpace.longitude = position.coords.longitude;
 
-  var markerCenter = new google.maps.Marker({ position: {lat: deskSpace.latitude, lng: deskSpace.longitude} });
+  var icon2 = {
+    url: "http://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Blue_sphere.svg/150px-Blue_sphere.svg.png",
+    scaledSize: new google.maps.Size(20, 20),
+    origin: new google.maps.Point(0,0), //origin
+    anchor: new google.maps.Point(20, 20)
+  }
+
+
+
+
+
+  var markerCenter = new google.maps.Marker({ position: {lat: deskSpace.latitude, lng: deskSpace.longitude}, icon: icon2 });
+  markerCenter.setMap(deskSpace.map);
   deskSpace.map.setCenter(markerCenter.getPosition());
+
 
   deskSpace.findMeals();
 };
