@@ -176,9 +176,16 @@ deskSpace.renderMeals = function(response){
   deskSpace.drawMap(null);
   deskSpace.markers = [];
 
+  var icon = {
+    url: "http://www.juniata.edu/life/i/redesign/dining/diningicon.png",
+    scaledSize: new google.maps.Size(60, 60),
+    origin: new google.maps.Point(0,0), //origin
+    anchor: new google.maps.Point(20, 20)
+  }
+
   // for each meal, add to array of markers and create popup
   meals.forEach(function(meal){
-    var marker = new google.maps.Marker({ position: {lat: meal.latitude, lng: meal.longitude} });
+    var marker = new google.maps.Marker({ position: {lat: meal.latitude, lng: meal.longitude}, icon: icon });
     // add to array of markers
     deskSpace.markers.push(marker);
     deskSpace.popup = new google.maps.InfoWindow();
