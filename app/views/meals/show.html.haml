@@ -7,7 +7,6 @@
   = link_to "order", new_meal_order_path(@meal), class: "btn"
 
 
-
 %p 
   .meal_show_labels
     Description:
@@ -82,7 +81,7 @@
   = link_to "Register", new_user_registration_path
 
 
-  = link_to "edit", edit_meal_path(@meal), class: "btn" if can? :update, @meal
-  %br
-  = link_to "remove", @meal, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn" if can? :destroy, @meal
-%br
+= link_to "edit", edit_meal_path(@meal), class: "btn" if can? :update, @meal
+
+= link_to "remove", @meal, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn" if can? :destroy, @meal
+

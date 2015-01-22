@@ -7,7 +7,7 @@
   
   = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
 
-  = link_to "View Orders", new_meal_path, class: "btn" if can? :create, Meal
+  = link_to "View Orders", orders_path, class: "btn" if can? :create, Meal
  
 .chef_shortinfo
 
