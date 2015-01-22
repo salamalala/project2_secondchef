@@ -61,7 +61,7 @@
 
 - if @user.role? :chef
 
-  %h3 Reviews
+  %h3 Reviews:
 
   - if @reviews.any?
     %ul
@@ -75,7 +75,7 @@
     No reviews yet
 
   %br
-  %br
+
 
 
   %h3 Current Meals on Offer:
@@ -105,7 +105,7 @@
 
 
   .archived_meals 
-    %h3 Archived Meals:
+    %h3 Past Meals:
 
     - if @archived_meals.any?
       %ul
@@ -128,30 +128,34 @@
     - else
       No archived meals yet
 
-    - if @user == current_user
-
-      %h2 Orders received
-
-
-      %h3 Current
-
-      / %h3 Current
-    %br
+  - if @user == current_user
 
 
 
-      - if @current_orders_received.any?
-        - @current_orders_received.each do |order|
-          = link_to order do
-            = "Order ##{order.id} - #{order.meal.name}"
-            &nbsp;
-            = number_to_currency(order.total, unit: "£")
-               
-            = time_tag(order.created_at)
-      - else
-        No orders received yet
+    %h3 Current Orders:
 
-      %h3 Archived
+    / %h3 Current
+
+
+
+
+    - if @current_orders_received.any?
+      - @current_orders_received.each do |order|
+        = link_to order do
+          = "Order ##{order.id} - #{order.meal.name}"
+          &nbsp;
+          = number_to_currency(order.total, unit: "£")
+             
+          = time_tag(order.created_at)
+    - else
+      No orders received yet
+
+  
+
+    .archived_meals 
+      %br
+
+      %h3 Past Orders :
 
       - if @archived_orders_received.any?
         - @archived_orders_received.each do |order|
@@ -163,4 +167,8 @@
         / = paginate @archived_orders_received
       - else
         No orders received yet
+
+    %br
+    %br
+
 

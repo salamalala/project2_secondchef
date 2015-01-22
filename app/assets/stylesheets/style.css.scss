@@ -180,7 +180,10 @@ html {
       //margin: 5em 0 100px;
       margin-top: 50px; // Height of the nav
       h1{
+        margin-top: 10px;
+        @include media($tablet) {
         margin-top: 100px;
+      }
         font-size: 1.8em;
         @include span-columns(12);
       }
@@ -377,13 +380,17 @@ html {
 
     .chef_shortinfo {
       text-decoration: none;
-      padding: 0 40px 40px 40px;
+      padding: 25px;
       background-color: #FCF8F5;
       -webkit-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       -moz-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       border: 3px solid orange;
-      margin-top: 100px;
+      @include media($tablet) {
+        margin-top: 100px;
+        padding: 0 40px 40px 40px;
+        }
+      
       a:hover{
         text-decoration: none;
         border-bottom: solid 2px black;
