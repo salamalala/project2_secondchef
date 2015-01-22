@@ -18,19 +18,17 @@ class MealsController < ApplicationController
     end
 
     # set search variables
-    latitude = params[:latitude] || (current_user && current_user.current_latitude) || DEFAULT_LATITUDE
-    longitude = params[:longitude] || (current_user && current_user.current_longitude) || DEFAULT_LONGITUDE
-    @latitude = latitude.to_f
-    @longitude = longitude.to_f
+    @latitude = (params[:latitude] || current_user.try(:current_latitude) || DEFAULT_LATITUDE).to_f
+    @longitude = (params[:longitude] || current_user.try(:current_longitude) || DEFAULT_LONGITUDE).to_f
     @distance = 400
 
     # run search
     if !params[:category].blank? && !params[:category][:category_id].blank? && params[:search]
-      @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.where("name like ? AND category_id = ?", "%#{params[:search]}%", params[:category][:category_id].to_i)
+      @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.where("LOWER(name) like ? AND category_id = ?", "%#{params[:search].downcase}%", params[:category][:category_id].to_i)
     elsif !params[:category].blank? && !params[:category][:category_id].blank?
       @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.where("category_id = ?", params[:category][:category_id].to_i) #.page(params[:page])
     elsif params[:search]
-      @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.where("name like ?", "%#{params[:search]}%")
+      @meals = Meal.near([@latitude, @longitude], @distance).available.tonight.where("LOWER(name) like ?", "%#{params[:search].downcase}%")
     else
       @meals = Meal.near([@latitude, @longitude], @distance).available.tonight #.page(params[:page])
     end
