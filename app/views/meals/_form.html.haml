@@ -12,6 +12,6 @@
   = f.input :description
   = f.input :price
   = f.input :quantity, collection: 0..50, prompt: "Select quantity"
-  = f.input :start_at
-  = f.input :end_at
+  = f.input :start_at, as: :string, input_html: {class: "datetimepicker"}
+  = f.input :end_at, :as => :string, input_html: {class: "datetimepicker"}
   = f.button :submit

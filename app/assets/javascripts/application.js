@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.datetimepicker
 //= require_tree .
 
 // **********************************************************************
@@ -210,11 +211,22 @@ deskSpace.drawMap = function(map) {
 // **********************************************************************
 
 $(function(){
+  // add datetimepicker
+  $('.datetimepicker').datetimepicker({
+    format:'d.m.Y H:i',
+    minDate: 0
+
+  });
+
+  $('.datepicker').datetimepicker({
+    timepicker:false,
+    minDate: 0
+  });
 
   //hamburger-icon display
   $('.nav-icon').on('click', function(e){
     e.preventDefault();
-    $('nav ul li').slideToggle();
+    $('nav ul').slideToggle();
   });
 
   if ($('#desktop_meals').length > 0) {
@@ -225,5 +237,10 @@ $(function(){
 
   myCalc.initialize();
 
+
 });
+
+
+
+  
 

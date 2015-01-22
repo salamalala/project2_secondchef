@@ -2,6 +2,12 @@
   = @meal.name
   = link_to "order", new_meal_order_path(@meal), class: "btn"
 
+
+-if current_user != @meal.user 
+  = link_to "order", new_meal_order_path(@meal), class: "btn"
+
+
+
 %p 
   .meal_show_labels
     Description:
@@ -67,7 +73,8 @@
 
 
 - if current_user
-  = link_to "Order", new_meal_order_path(@meal), class: "btn" if can? :create, Order
+  - if current_user != @meal.user 
+    = link_to "Order", new_meal_order_path(@meal), class: "btn" if can? :create, Order
 - else
   Want to order?
   = link_to "Log in", new_user_session_path

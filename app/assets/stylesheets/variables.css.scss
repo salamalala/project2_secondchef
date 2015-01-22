@@ -1,6 +1,8 @@
 $tablet: new-breakpoint(min-width 768px);
 $desktop: new-breakpoint(min-width 1024px); 
 
+$visual-grid: true !default;
+
 
 
 $main_font: 'Lato', sans-serif;
