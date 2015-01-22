@@ -128,32 +128,32 @@
 
     - if @user == current_user
 
-      / %h2 Orders received
+      %h2 Orders received
 
-      / %h3 Current
+      %h3 Current
 
 
-      / - if @current_orders_received.any?
-      /   - @current_orders_received.each do |order|
-      /     = link_to order do
-      /       = "Order ##{order.id} - #{order.meal.name}"
-      /       &nbsp;
-      /       = number_to_currency(order.total, unit: "£")
+      - if @current_orders_received.any?
+        - @current_orders_received.each do |order|
+          = link_to order do
+            = "Order ##{order.id} - #{order.meal.name}"
+            &nbsp;
+            = number_to_currency(order.total, unit: "£")
                
-      /       = time_tag(order.created_at)
-      / - else
-      /   No orders received yet
+            = time_tag(order.created_at)
+      - else
+        No orders received yet
 
-      / %h3 Archived
+      %h3 Archived
 
-      / - if @archived_orders_received.any?
-      /   - @archived_orders_received.each do |order|
-      /     = link_to order do       
-      /       = "Order ##{order.id} - #{order.meal.name}"
-      /       &nbsp;
-      /       = number_to_currency(order.total, unit: "£")
-      /       = time_tag(order.created_at)
-      /   / = paginate @archived_orders_received
-      / - else
-      /   No orders received yet
+      - if @archived_orders_received.any?
+        - @archived_orders_received.each do |order|
+          = link_to order do       
+            = "Order ##{order.id} - #{order.meal.name}"
+            &nbsp;
+            = number_to_currency(order.total, unit: "£")
+            = time_tag(order.created_at)
+        / = paginate @archived_orders_received
+      - else
+        No orders received yet
 
