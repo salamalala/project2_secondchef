@@ -8,7 +8,6 @@ html {
 
   body{
 
-    @include outer-container;
 
     .clearfix {
       clear:both;
@@ -68,9 +67,6 @@ html {
         }
 
       min-width: 100%;
-      // background-position: 0% 0%;
-
-      // 
 
 
       // // top: 0;
@@ -269,6 +265,9 @@ html {
           text-decoration: none;
         }
       }
+    
+      
+  
 
       .chef_profile_add, .chef_profile_view_orders {
         width: 200px;
