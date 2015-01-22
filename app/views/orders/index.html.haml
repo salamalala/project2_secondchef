@@ -10,7 +10,7 @@
           = number_to_currency(order.total, unit: "£")
           %br
           %br
-          = "Pick up time: #{order.fetch_at}"
+          = "Pick up time: #{order.fetch_at.strftime('%H:%M, %d/%m/%Y' )}" 
 
 
 = paginate @orders
