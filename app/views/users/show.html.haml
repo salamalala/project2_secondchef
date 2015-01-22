@@ -11,7 +11,7 @@
     .chef_profile_add
       = link_to "Add Meal", new_meal_path if can? :create, Meal
     .chef_profile_view_orders
-      = link_to "View Orders", new_meal_path if can? :create, Meal
+      = link_to "View Orders", orders_path if can? :create, Meal
    
 
 
