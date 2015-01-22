@@ -25,7 +25,12 @@ html {
 
 
   body{
-    @include outer-container;
+
+    .clearfix {
+      clear:both;
+    }
+
+    // @include outer-container;
     font-family: $main_font;
     color: $main_font_color;
     //height: 100%;
@@ -92,12 +97,13 @@ html {
           padding-left: 0;
           height: 50px;
           line-height: 50px;
-          display: inline-block;
+          // display: inline-block;
+          display: none;
           margin: 0;
           list-style-type: none;
           width: 100%;
           li {  
-            display: none;
+            display: block;
             text-align: center;
             background-color: #fff; 
             border-bottom: solid 1px  #6D695E;
@@ -210,7 +216,8 @@ html {
         @include span-columns(12);
         margin: 5px 0 20px 0;
         text-align: center;
-        padding: 15px 30px;
+        padding: 0 15px;
+        line-height: 40px;
         border: solid 2px $main_font_color;
         border-radius: 0;
         text-transform: uppercase;
@@ -232,7 +239,8 @@ html {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        padding: 15px 30px;
+        padding: 0 15px;
+        line-height: 40px;
         border-radius: 0;
         letter-spacing: 1px;
       }
@@ -325,6 +333,11 @@ html {
         clear: both;
         display: block;
       }
+    }
+
+
+    .archived_meals, .archived_meals a {
+      color: grey;
     }
 
 

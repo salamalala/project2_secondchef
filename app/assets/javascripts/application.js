@@ -15,95 +15,200 @@
 //= require jquery.datetimepicker
 //= require_tree .
 
+// **********************************************************************
 // order total calculation
 
 var myCalc = myCalc || {};
 
 myCalc.initialize = function() {
+
+  // set up variables
+  myCalc.priceElement = $("#hiddenprice");
+  myCalc.quantityElement = $("#order_quantity");
+  myCalc.totalElement = $("#totalshow");
+
   var price = parseFloat(myCalc.priceElement.text());
   myCalc.quantityElement.on("change", function() {
     myCalc.recalculateTotal([price]);
   });
+
 };
 // TODO check whether price about needs to be in square brackets? "([price])"
 
 myCalc.recalculateTotal = function(price) {
+
   var quantity = myCalc.quantityElement.val();
   var total = price * quantity;
   myCalc.totalElement.text("£" + total.toFixed(2));
+
 };
 
-// mapping
+// **********************************************************************
+// mobile meals
 
-var myMap = myMap || {};
+var mobSpace = mobSpace || {};
 
-myMap.initialize = function() {
-  
-  var mapOptions = {
-    center: {lat: 51.52, lng: -0.115},
-    zoom: 14,
-    styles: [ { "stylers": [ { "lightness": 14 }, { "gamma": 0.59 }, { "saturation": -71 } ] } ]
-  };
-  myMap.map = new google.maps.Map(myMap.mapElement, mapOptions);
+mobSpace.initialize = function() {
 
-  myMap.locatorElement.on('click', function(){
-    myMap.getPosition();
-    console.log("clicked");
+  mobSpace.searchForm = $('#search_form');
+  mobSpace.latitudeElement = $("#latitude");
+  mobSpace.longitudeElement = $("#longitude");
+  mobSpace.nameElement = $('#search');
+  mobSpace.categoryElement = $('select');
+  mobSpace.searchElement = $("#searchbutton");
+  mobSpace.mealList = $('#meal_list');
+  mobSpace.loadingElement = $('#loadingDiv');
+
+  // on initialize, geolocate then run updateMeals
+  var geolocation = navigator.geolocation.getCurrentPosition(mobSpace.updateMeals);
+
+  // on click, geolocate then run updateMeals
+  mobSpace.searchElement.on('click', function(){
+    mobSpace.searchForm.submit();
+    mobSpace.loadingElement.show();
   });
 
-};
-
-myMap.getPosition = function(){
-  if (navigator.geolocation) {
-    var geolocation = navigator.geolocation.getCurrentPosition(myMap.geolocationSuccess, myMap.geolocationFail);
-    console.log("geolocated")
-  } else {
-    alert("Geolocation not enabled.");
-  };
-};
-
-myMap.geolocationSuccess = function(position){
+  // handle ajax responses (associated with remote: true form option)
+  mobSpace.searchForm.
+  on('ajax:success', function(evt, data, status, xhr){
+    mobSpace.mealList.html(data);
+    mobSpace.loadingElement.hide();
+  }).
+  on('ajax:error', function(xhr, status, error){
+    console.log('error! :', error);
+  });
   
+  // submit the form while typing in meal name field
+  mobSpace.nameElement.on('keyup', function(){
+    mobSpace.searchForm.submit();
+  })
+
+  // submit the form when a new category is selected
+  mobSpace.categoryElement.on('change', function(){
+    mobSpace.searchForm.submit();
+  })
+
+};
+
+mobSpace.updateMeals = function(position){
+
+  // get user position
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
-  // var data = { latitude: latitude, longitude: longitude };
-  myMap.latitudeElement.val(latitude);
-  myMap.longitudeElement.val(longitude);
-  console.log("form updated");
 
-  var markerOptions = { position: {lat: latitude, lng: longitude} };
-  var marker = new google.maps.Marker(markerOptions);
-  marker.setMap(myMap.map);
+  // submit the form if the user's location is substantially different from what was being used already
+  mobSpace.latitudeElement.val(latitude);
+  mobSpace.longitudeElement.val(longitude);
+  mobSpace.searchForm.submit();    
+  
+};
 
-  var popupOptions = { content: "you are here" };
-  var popup = new google.maps.InfoWindow(popupOptions);
-  google.maps.event.addListener(marker, 'click', function(){
-    popup.open(myMap.map, marker);
+// **********************************************************************
+// desktop meals
+
+var deskSpace = deskSpace || {};
+
+deskSpace.latitude  = 51.52;
+deskSpace.longitude = -1.115;
+
+deskSpace.initialize = function() {
+
+  deskSpace.nameElement = $('#search');
+  deskSpace.categoryElement = $('select');
+  deskSpace.searchElement = $("#searchbutton");
+  deskSpace.mapElement = $("#desktop_meals")[0];
+  deskSpace.loadingElement = $('#loadingDiv');
+
+  // set default center point and load map
+  var mapOptions = { center: { lat: deskSpace.latitude, lng: deskSpace.longitude }, zoom: 7  };
+  deskSpace.map = new google.maps.Map(deskSpace.mapElement, mapOptions);
+
+  // set up empty array of markers
+  deskSpace.markers = [];
+
+  // on initialize, geolocate then run centerMap and findMeals
+  var geolocation = navigator.geolocation.getCurrentPosition(deskSpace.centerMap);
+  
+  // on click, geolocate then run centerAndFindMeals
+  deskSpace.searchElement.on('click', function(){
+    deskSpace.loadingElement.show();
+    deskSpace.findMeals();
   });
-  myMap.map.setCenter(marker.getPosition());
 
 };
 
-// myMap.submitAjax = function(data){
-//   console.log("sending ajax");
-//   console.log(data);
-//   $.ajax({
-//     type: "GET",
-//     url: "/meals",
-//     data: data,
-//     dataType: 'json',
-//     success: function(response){
-//       console.log("success");
-//       console.log(response);
-//       // updateBalance('#current_balance', response["current_balance"]);
-//       // updateBalance('#savings_balance', response["savings_balance"]);
-//     }
-//   });
-// };
+deskSpace.centerMap = function(position){
 
-myMap.geolocationFail = function(){
-  alert("Geolocation failed.")
+  // get user position, create dummy marker and center map to dummy marker
+  deskSpace.latitude = position.coords.latitude;
+  deskSpace.longitude = position.coords.longitude;
+  console.log("centerMap", deskSpace.latitude);
+  console.log("centerMap", deskSpace.longitude)
+
+  var markerCenter = new google.maps.Marker({ position: {lat: deskSpace.latitude, lng: deskSpace.longitude} });
+  deskSpace.map.setCenter(markerCenter.getPosition());
+
+  deskSpace.findMeals();
 };
+
+deskSpace.findMeals = function(){
+  
+  console.log("findMeals", deskSpace.latitude);
+  console.log("findMeals", deskSpace.longitude);
+
+  // // get form inputs and create data hash
+  var name = deskSpace.nameElement.val();
+  var category = deskSpace.categoryElement.val();
+  var data = { latitude: deskSpace.latitude, longitude: deskSpace.longitude, search: name, category: { category_id: category } };
+
+  console.log("findMeals", data);
+
+  // send data hash to meals controller
+  $.ajax({
+    type: "GET",
+    url: "/meals",
+    data: data,
+    dataType: 'json',
+    success: function(response){
+      deskSpace.renderMeals(response);
+    }
+  });
+
+};
+
+deskSpace.renderMeals = function(response){
+  var meals = response.meals;
+
+  // clear map and empty array of markers
+  deskSpace.drawMap(null);
+  deskSpace.markers = [];
+
+  // for each meal, add to array of markers and create popup
+  meals.forEach(function(meal){
+    var marker = new google.maps.Marker({ position: {lat: meal.latitude, lng: meal.longitude} });
+    // add to array of markers
+    deskSpace.markers.push(marker);
+    deskSpace.popup = new google.maps.InfoWindow({ content: meal.name });
+    google.maps.event.addListener(marker, 'click', function(){
+      deskSpace.popup.close();
+      deskSpace.popup.setContent(meal.name);
+      deskSpace.popup.open(deskSpace.map, marker);
+    });
+  });
+
+  // draw map
+  deskSpace.drawMap(deskSpace.map);
+  deskSpace.loadingElement.hide();
+
+}
+
+deskSpace.drawMap = function(map) {
+  for (var i = 0; i < deskSpace.markers.length; i++) {
+    deskSpace.markers[i].setMap(map);
+  }
+}
+
+// **********************************************************************
 
 $(function(){
   // add datetimepicker
@@ -116,42 +221,21 @@ $(function(){
   $('.datepicker').datetimepicker({
     timepicker:false,
     minDate: 0
-
   });
 
   //hamburger-icon display
   $('.nav-icon').on('click', function(e){
     e.preventDefault();
-    $('nav ul li').slideToggle();
+    $('nav ul').slideToggle();
   });
 
+  if ($('#desktop_meals').length > 0) {
+    deskSpace.initialize();
+  } else {
+    mobSpace.initialize();
+  }
 
-
-  // ajax search
-  $('#search_form').
-  on('ajax:success', function(evt, data, status, xhr){
-    $('#meal_list').html(data);
-  }).
-  on('ajax:error', function(xhr, status, error){
-    console.log('error! :', error);
-  });
-  $('#search').on('keyup', function(){
-    $('#search_form').submit();
-  })
-
- 
-  
-  myCalc.priceElement = $("#hiddenprice");
-  myCalc.quantityElement = $("#order_quantity");
-  myCalc.totalElement = $("#totalshow");
   myCalc.initialize();
-
-  myMap.locatorElement = $("#locator");
-  myMap.latitudeElement = $("#latitude");
-  myMap.longitudeElement = $("#longitude");
-  myMap.finderElement = $("#finder");
-  myMap.mapElement = $("#desktop_meals")[0];
-  myMap.initialize();
 
 
 });
