@@ -36,7 +36,6 @@ class MealsController < ApplicationController
     end
 
     if request.env["HTTP_USER_AGENT"] =~ /Mobile|webOS/
-      mobile
       if request.xhr?
         render @meals, layout: false # meals partial (inserted into list)
       else

@@ -25,7 +25,7 @@
         - @order.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.input :fetch_at
+  = f.input :fetch_at, as: :string, input_html: {class: "datetimepicker"}
   %br
   = f.input :comments
 
@@ -50,7 +50,7 @@
   %br
   = f.input :credit_card_number
   %br
-  = f.input :credit_card_expiry
+  = f.input :credit_card_expiry, as: :string, input_html: {class: "datepicker"}
   %br
   = f.hidden_field :meal_id
   = f.hidden_field :price
