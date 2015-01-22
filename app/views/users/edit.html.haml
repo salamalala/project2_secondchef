@@ -11,19 +11,19 @@
           %li= msg
 
   %h2 Chef details
-  = f.input :first_name
-  = f.input :last_name
-  = f.input :image
-  = f.input :remote_image_url
-  = f.input :chef_name
-  = f.input :description
-  = f.input :phone_number
+  = f.input :first_name, label: false
+  = f.input :last_name, label: false
+  = f.input :image, placeholder: "Upload an image", label: false
+  = f.input :remote_image_url, placeholder: "Paste an image url", label: false
+  = f.input :chef_name, placeholder: "Your chef name", label: false 
+  = f.input :description, placeholder: "Description of your kitchen", label: false 
+  = f.input :phone_number, placeholder: "Your phone number", label: false
 
   %h2 Address
-  = f.input :address_line_1
-  = f.input :address_line_2
-  = f.input :city
-  = f.input :postcode
+  = f.input :address_line_1, placeholder: "Addressline 1", label: false
+  = f.input :address_line_2, placeholder: "Addressline 2", label: false
+  = f.input :city, placeholder: "City", label: false
+  = f.input :postcode, placeholder: "Postcode", label: false
   // simple form comes with list of all the countries. 
   = f.input :country, priority: ["United Kingdom"]
 

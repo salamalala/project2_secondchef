@@ -7,6 +7,7 @@
   = link_to "order", new_meal_order_path(@meal), class: "btn"
 
 
+
 %p 
   .meal_show_labels
     Description:
@@ -32,17 +33,19 @@
 %p 
   .meal_show_labels
     Availability:
+  Between
   = time_tag(@meal.start_at)
-  %br
+  and
   = time_tag(@meal.end_at)
+  %br
+
 
 %br
 
 .chef_shortinfo
-  = link_to @meal.user do
 
-    %p
-      = image_tag(@meal.user.image.thumb.url)
+  = image_tag(@meal.user.image.thumb.url)
+  = link_to @meal.user do
 
     %p
       = @meal.user.chef_name
@@ -70,10 +73,12 @@
       - if !@meal.user.country.blank?
         = @meal.user.country
 
+  = link_to "More info about the chef", @meal.user, class: "btn"
+
 
 - if current_user
   - if current_user != @meal.user 
-    = link_to "Order", new_meal_order_path(@meal), class: "btn" if can? :create, Order
+    = link_to "Order", new_meal_order_path(@meal), class: "btn hvr-pulse-grow" if can? :create, Order
 - else
   Want to order?
   = link_to "Log in", new_user_session_path
