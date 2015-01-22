@@ -369,7 +369,7 @@ html {
     .chef_shortinfo {
       text-decoration: none;
       padding: 0 40px 40px 40px;
-      background-color: #EDF3F1;
+      background-color: #FCF8F5;
       -webkit-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       -moz-box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
       box-shadow: 10px 10px 5px -8px rgba(102,102,102,1);
@@ -415,10 +415,10 @@ html {
 
 
     .chef_shortinfo img {
-      float: right;
-      margin: right;
+      // float: right;
+      // margin-right: 200px;
       border-radius: 100%;
-      padding: 10px;
+      // padding: 10px;
       // width: 150px;
       // height: auto;
     }

@@ -1,7 +1,8 @@
-%br
 
 .chef_shortinfo
   %h1
+    = link_to image_tag(@user.image.thumb.url), @user.image.detail.url
+    %br
     = "#{@user.chef_name}"
     .chef_edit_button
       = link_to "edit profile", edit_user_path(@user) if can? :update, @user
@@ -13,8 +14,7 @@
    
 
 
-  %p
-    = link_to image_tag(@user.image.thumb.url), @user.image.detail.url
+    
 
   %p
     .chef_profile_labels 
