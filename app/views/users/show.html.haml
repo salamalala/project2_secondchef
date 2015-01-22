@@ -78,98 +78,98 @@
   %br
 
 
-
-  %h3 Current Meals on Offer:
-
-
-  - if @current_meals.any?
-    %ul
-      - @current_meals.each do |meal|
-        %li
-          = link_to meal do
-            = meal.name 
-            |
-            = number_to_currency(meal.price, unit: "£")
-            |
-            = time_tag(meal.start_at)
-            |
-            = time_tag(meal.end_at)
-        %br
-  - else
-    No current meals 
-    %br
-    = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
+  .hover_for_show_user
+    %h3 Current Meals on Offer:
 
 
-
-
-
-
-  .archived_meals 
-    %h3 Past Meals:
-
-    - if @archived_meals.any?
+    - if @current_meals.any?
       %ul
-      - @archived_meals.each do |meal|
-        %li
-
-          = link_to meal do
-            = meal.name
-            &nbsp;
-            |
-            = number_to_currency(meal.price, unit: "£") 
-            / = time_tag(meal.start_at)
-            |
-            = time_tag(meal.end_at) 
-
-
-        %br
-
-      / = paginate @archived_meals
+        - @current_meals.each do |meal|
+          %li
+            = link_to meal do
+              = meal.name 
+              |
+              = number_to_currency(meal.price, unit: "£")
+              |
+              = time_tag(meal.start_at)
+              |
+              = time_tag(meal.end_at)
+          %br
     - else
-      No archived meals yet
-
-  - if @user == current_user
-
-
-
-    %h3 Current Orders:
-
-    / %h3 Current
+      No current meals 
+      %br
+      = link_to "Add Meal", new_meal_path, class: "btn" if can? :create, Meal
 
 
 
 
-    - if @current_orders_received.any?
-      - @current_orders_received.each do |order|
-        = link_to order do
-          = "Order ##{order.id} - #{order.meal.name}"
-          &nbsp;
-          = number_to_currency(order.total, unit: "£")
-             
-          = time_tag(order.created_at)
-    - else
-      No orders received yet
 
-  
 
     .archived_meals 
-      %br
+      %h3 Past Meals:
 
-      %h3 Past Orders :
+      - if @archived_meals.any?
+        %ul
+        - @archived_meals.each do |meal|
+          %li
 
-      - if @archived_orders_received.any?
-        - @archived_orders_received.each do |order|
-          = link_to order do       
+            = link_to meal do
+              = meal.name
+              &nbsp;
+              |
+              = number_to_currency(meal.price, unit: "£") 
+              / = time_tag(meal.start_at)
+              |
+              = time_tag(meal.end_at) 
+
+
+          %br
+
+        / = paginate @archived_meals
+      - else
+        No archived meals yet
+
+    - if @user == current_user
+
+
+
+      %h3 Current Orders:
+
+      / %h3 Current
+
+
+
+
+      - if @current_orders_received.any?
+        - @current_orders_received.each do |order|
+          = link_to order do
             = "Order ##{order.id} - #{order.meal.name}"
             &nbsp;
             = number_to_currency(order.total, unit: "£")
+               
             = time_tag(order.created_at)
-        / = paginate @archived_orders_received
       - else
         No orders received yet
 
-    %br
-    %br
+    
+
+      .archived_meals 
+        %br
+
+        %h3 Past Orders :
+
+        - if @archived_orders_received.any?
+          - @archived_orders_received.each do |order|
+            = link_to order do       
+              = "Order ##{order.id} - #{order.meal.name}"
+              &nbsp;
+              = number_to_currency(order.total, unit: "£")
+              = time_tag(order.created_at)
+          / = paginate @archived_orders_received
+        - else
+          No orders received yet
+
+      %br
+      %br
 
 

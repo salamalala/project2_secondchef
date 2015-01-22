@@ -434,12 +434,17 @@ html {
     #popupcontent {
       border: 2px solid orange;
       padding: 10px;
+      line-height: 20px;
     }
 
     #popupcontent a{
       color: gray;
       padding: 2px;
       text-size: 12px;
+      text-decoration: none;
+      &:hover{
+        color: black;
+      }
     }
 
     .chef_profile_labels, .meal_show_labels {
@@ -509,7 +514,16 @@ html {
       
     }
 
-  
+    
+    .hover_for_show_user a{
+      padding: 3px;
+        &:hover{
+        // background-color: rgba(227, 144, 0, 0.3);
+        background-color: rgba(35, 110, 130, 0.9);
+        text-decoration: none;
+        color: white;
+    }
+  }
 
     
 

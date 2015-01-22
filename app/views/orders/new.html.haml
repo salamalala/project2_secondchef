@@ -1,8 +1,9 @@
 / %h1 Complete Order
 
 %br
+%br
 
-%p 
+%h3
   Meal:
   = link_to @order.meal.name, @order.meal if can? :read, @order.meal
 
@@ -25,9 +26,9 @@
         - @order.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.input :fetch_at, as: :string, input_html: {class: "datetimepicker"}
+  = f.input :fetch_at, as: :string, input_html: {class: "datetimepicker"}, placeholder: "Fetch at", label: false
   %br
-  = f.input :comments
+  = f.input :comments, placeholder: "Comments", label: false
 
   %p 
     Quantity:
@@ -37,20 +38,21 @@
     Price:
     = number_to_currency(@order.meal.price, unit: "£")
 
-  = f.input :quantity, collection: 1..@order.meal.quantity, prompt: "Select quantity"
+  = f.input :quantity, collection: 1..@order.meal.quantity, prompt: "Select quantity", label: false
 
   #hiddenprice= @order.meal.price
 
-  %p
-    Total:
-    %br
+  %h3
+    Total price: 
+
     %span#totalshow £...
 
-  = f.input :credit_card_name
+
+  = f.input :credit_card_name, placeholder: "Credit card name", label: false
   %br
-  = f.input :credit_card_number
+  = f.input :credit_card_number, placeholder: "Credit card number", label: false
   %br
-  = f.input :credit_card_expiry, as: :string, input_html: {class: "datepicker"}
+  = f.input :credit_card_expiry, as: :string, input_html: {class: "datepicker"}, placeholder: "Credit card expiry date", label: false
   %br
   = f.hidden_field :meal_id
   = f.hidden_field :price

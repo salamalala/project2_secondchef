@@ -31,7 +31,9 @@ class Order < ActiveRecord::Base
   end
 
   def expiry_must_be_after_today
+    if credit_card_expiry
     errors.add(:credit_card_expiry, "must be after today") if credit_card_expiry < Date.tomorrow
+    end
   end
 
   def total
