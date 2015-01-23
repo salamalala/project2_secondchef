@@ -1,17 +1,20 @@
 
 .chef_shortinfo
   %h1
+
     = "#{@user.chef_name}"
+
     .chef_edit_button
       = link_to "edit profile", edit_user_path(@user) if can? :update, @user
     %br
     = link_to image_tag(@user.image.thumb.url), @user.image.detail.url
-    
-    %br
-    .chef_profile_add
-      = link_to "Add Meal", new_meal_path if can? :create, Meal
-    .chef_profile_view_orders
-      = link_to "View Orders", orders_path if can? :create, Meal
+
+
+    - if current_user == @user
+      .chef_profile_add
+        = link_to "Add Meal", new_meal_path if can? :create, Meal
+      .chef_profile_view_orders
+        = link_to "View Orders", orders_path if can? :create, Meal
    
 
 
@@ -133,6 +136,10 @@
 
 
 
+
+
+
+      %br
       %h3 Current Orders:
 
       / %h3 Current
@@ -159,12 +166,15 @@
         %h3 Past Orders :
 
         - if @archived_orders_received.any?
-          - @archived_orders_received.each do |order|
-            = link_to order do       
-              = "Order ##{order.id} - #{order.meal.name}"
-              &nbsp;
-              = number_to_currency(order.total, unit: "£")
-              = time_tag(order.created_at)
+          %ul
+            - @archived_orders_received.each do |order|
+              %li
+                = link_to order do       
+                  = "Order ##{order.id} - #{order.meal.name}"
+                  &nbsp;
+                  = number_to_currency(order.total, unit: "£")
+                  = time_tag(order.created_at)
+              %br
           / = paginate @archived_orders_received
         - else
           No orders received yet

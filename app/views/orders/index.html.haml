@@ -1,16 +1,18 @@
 %h1 All my orders:
+- if !@orders.blank?
+  %ul
+    #order_list
+      - @orders.each do |order|
+        %li
+          = link_to order do
+            = "Order ##{order.id} - #{order.meal.name}"
+            &nbsp;
+            = number_to_currency(order.total, unit: "£")
+            %br
+            %br
+            = "Pick up time: #{order.fetch_at.strftime('%H:%M, %d/%m/%Y' )}" 
 
-%ul
-  #order_list
-    - @orders.each do |order|
-      %li
-        = link_to order do
-          = "Order ##{order.id} - #{order.meal.name}"
-          &nbsp;
-          = number_to_currency(order.total, unit: "£")
-          %br
-          %br
-          = "Pick up time: #{order.fetch_at.strftime('%H:%M, %d/%m/%Y' )}" 
+  = paginate @orders
 
-
-= paginate @orders
+- else
+  You have not received any orders yet!

@@ -121,7 +121,7 @@ deskSpace.initialize = function() {
 
   // set default center point and load map
 
-  var mapOptions = { center: { lat: deskSpace.latitude, lng: deskSpace.longitude }, zoom: 12  };
+  var mapOptions = { center: { lat: deskSpace.latitude, lng: deskSpace.longitude }, zoom: 11  };
 
   deskSpace.map = new google.maps.Map(deskSpace.mapElement, mapOptions);
 

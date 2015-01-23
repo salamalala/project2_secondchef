@@ -399,8 +399,8 @@ html {
         margin-bottom: 30px;
         }
       img{
-        // float: right;
-        // padding: 20px;
+        float: right;
+        padding: 20px;
         border-radius: 100%;
        }
       a:hover{
@@ -554,10 +554,8 @@ html {
         background-color: rgba(35, 110, 130, 0.9);
         text-decoration: none;
         color: white;
+        }
     }
-  }
-
-    
 
     footer{
       width: 100%;
@@ -572,9 +570,12 @@ html {
       a {
         color: #fff;
         text-decoration: none;
-        &:link{
+        &:link, &:visited, &:active {
           color: #fff;
           text-decoration: none;
+        }
+        &:hover {
+          text-decoration: underline;
         }
       } 
     }
