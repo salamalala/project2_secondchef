@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
     if @order.save
       @meal = Meal.find(@order.meal_id)
       @meal.quantity -= @order.quantity
-      @meal.save
+      @meal.save(validate: false)
       flash[:notice] = "Order created."
       respond_with(@order)
     else

@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :orders_received, through: :meals, source: :orders # [as chef]
   has_many :reviews, through: :orders_received # [as chef]
 
+  
   validates :first_name, :last_name, presence: true
 
   with_options if: :is_chef? do |chef|
