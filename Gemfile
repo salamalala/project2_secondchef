@@ -14,6 +14,7 @@ gem 'rmagick'
 gem 'omniauth'
 gem 'jquery-datetimepicker-rails'
 gem 'active_model_serializers'
+gem 'fog', '~> 1.3.1'
 
 group :development, :test do
   gem 'pry-rails'
