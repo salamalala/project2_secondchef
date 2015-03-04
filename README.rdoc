@@ -1,28 +1,4 @@
-== README
+***** SECOND CHEF *****  A project with two others at my General Assembly course creating an app that aims to connect busy people seeking an affordable meal with those who've cooked extra portions. I implemented sections of the project in SASS, Javascript, Ajax and Bourbon Neat.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Technologies used: Ruby on Rails, HAML, SASS, JavaScript/jQuery, Ajax and Bourbon Neat. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
