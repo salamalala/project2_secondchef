@@ -146,7 +146,7 @@ deskSpace.centerMap = function(position){
   deskSpace.longitude = position.coords.longitude;
 
   var icon2 = {
-    url: "http://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Blue_sphere.svg/150px-Blue_sphere.svg.png",
+    url: "https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/128/marker.png",
     scaledSize: new google.maps.Size(20, 20),
     origin: new google.maps.Point(0,0), //origin
     anchor: new google.maps.Point(20, 20)
