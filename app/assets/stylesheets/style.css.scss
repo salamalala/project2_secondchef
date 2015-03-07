@@ -23,8 +23,7 @@ html {
     text-align: left;
     background: white;
     background-color: #fffdfc;
-    background-image: url(http://www.transparenttextures.com/patterns/absurdity.png);
-    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+ 
     @include media($tablet) {
     font-size: 20px;
       }
@@ -55,7 +54,7 @@ html {
     }
 
     .title_image {
-      background: url(http://media.giphy.com/media/WKUSlerPGZ73i/giphy.gif);
+      background: url(http://38.media.tumblr.com/69e8e35740956cdb641c5af23ca7b37f/tumblr_n5wahzYjPm1t0adyro1_r4_500.gif);
       background-repeat: no-repeat;
       background-size: cover;
       height: 480px;
@@ -98,7 +97,9 @@ html {
           }
         a.logo {
           font-family: $heading_font;
+          margin-left: 10px;
           font-size: 1em; 
+          letter-spacing: 3px;  
           float: left;
           color: #EE7600;
           text-decoration: none;
@@ -170,8 +171,7 @@ html {
 
     main {
       background-color: #fffdfc;
-      background-image: url(http://www.transparenttextures.com/patterns/absurdity.png);
-
+  
       @include media($tablet) {
         @include span-columns(8);
         @include shift(2);
@@ -575,7 +575,8 @@ html {
           text-decoration: none;
         }
         &:hover {
-          text-decoration: underline;
+          padding-bottom: 5px;
+          border-bottom: 2px solid #fff;
         }
       } 
     }
