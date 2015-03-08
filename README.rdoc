@@ -1,4 +1,4 @@
-***** SECOND CHEF *****  A project with two others at my General Assembly course creating an app that aims to connect busy people seeking an affordable meal with those who've cooked extra portions. I implemented sections of the project in SASS, Javascript, Ajax and Bourbon Neat.
+***** SECOND CHEF *****  A project with two others at my General Assembly course creating an app that aims to connect busy people seeking an affordable meal with those who've cooked extra portions. I implemented sections of the project in SASS, JavaScript, Ajax and Bourbon Neat.
 
 Technologies used: Ruby on Rails, HAML, SASS, JavaScript/jQuery, Ajax and Bourbon Neat. 
 
